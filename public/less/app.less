@@ -1,0 +1,42 @@
+@import "../lib/bootstrap/bootstrap/less/bootstrap";
+
+@b : #fff;
+body {
+	background-color: @b;
+}
+.mytable {
+	width: 100%;
+	border-collapse: collapse;
+	td,th {
+		text-align: left;
+		padding: 3px 10px;
+	}
+	thead {
+		background-color: #e5e6e7;
+	}
+}
+
+section {
+	.make-row();
+}
+
+.search-area {
+	padding:10px 0 25px 21px;
+	background-color: #e5e6e7;
+}
+
+.qtable-droplike {
+		float: left;
+		margin-right :5px
+	
+}
+.droplike-list {
+	dt{
+		float: left;
+		margin-right: 10px;
+	}
+	dt:first-child {
+		padding-top:5px
+	}
+}
+
