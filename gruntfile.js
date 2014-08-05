@@ -6,16 +6,11 @@ module.exports = function (grunt) {
     var app = {
       // Refresh server if any of these files changes.
       toReloadFiles : [
-        'public/index.htm',
-        'public/less/*.less',
-        'public/js/*.js',
-        'public/js/**/*.js',
-        'public/js/**/*.htm',
         'gruntfile.js',
+        'public/index.htm'
       ],
       isLivereload : true
     };
-
   // Settings.
   grunt.initConfig({
     express: {
@@ -23,11 +18,11 @@ module.exports = function (grunt) {
         livereload: app.isLivereload,
         nospawn: app.isLivereload // to reload express.
       },
-      files: ['public/index.htm'],
+      // files: ['views/index.jade'],
       tasks: ['express:dev'],
       dev: {
         options: {
-          script: 'server.js',
+          script: 'server/bin/www',
         }
       }
     },

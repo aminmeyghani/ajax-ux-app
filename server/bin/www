@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+// am: run server using the settings in serverSettings.js
+var server = require('../serverSettings');
+server.express.set('port', server.settings.port || 3000);
+
+var server = server.express.listen(server.express.get('port'), function() {
+  console.log('Express server listening on port ' + server.address().port);
+});
