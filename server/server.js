@@ -1,17 +1,16 @@
 // Server settings.
-var express      = require('express');
-var path         = require('path');
-var app          = express();
-var serverConfig = require('./settings');
-var middleware   = require('middleware');
+var express  = require('express');
+var path     = require('path');
+var app      = express();
+var settings = require('./settings');
 
 // Sets the root for the static files.
 // up a directory in the public folder.
-app.use(express.static(__dirname + serverConfig.servePath));
+app.use(express.static(__dirname + settings.servePath));
 
 // when the request comes in for "/", get index with respect to the current directory of the app.
 app.get( "/", function( req, res ){
-    res.sendfile(serverConfig.publicFolder+serverConfig.indexFile, { root: "."});
+    res.sendfile(settings.publicFolder+settings.indexFile, { root: "."});
 });
 
 // route for dashboard
@@ -26,28 +25,6 @@ app.get('*', function(req, res, next) {
 	res.status(404).redirect("/#/404");	
 });
 
-// error handling template
-/*
-app.get('*', function(req, res, next) {
-  var err = new Error();
-  err.status = 404;
-  next(err);
-});
- 
-// handling 404 errors
-app.use(function(err, req, res, next) {
-  if(err.status !== 404) {
-    return next();
-  }
- 
-  res.send(err.message || '** no unicorns here **');
-});
-*/
 
-
-// am: expose api to be used by the www script runner.
-var exp = {  
-	express: app,
-	settings: serverConfig
-};
-module.exports = exp;
+// export the server routes and settings to be passed to www.
+module.exports = app;
