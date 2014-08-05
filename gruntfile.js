@@ -7,7 +7,10 @@ module.exports = function (grunt) {
       // Refresh server if any of these files changes.
       toReloadFiles : [
         'gruntfile.js',
-        'public/index.htm'
+        'public/index.htm',
+        'public/less/*.less',
+        'public/js/*.js',
+        'public/js/**/*.js',
       ],
       isLivereload : true
     };
