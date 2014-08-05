@@ -17,35 +17,37 @@ app.use(express.static(__dirname + _settings.servePath));
 
 // when the request comes in for "/", get index with respect to the current directory of the app.
 app.get( _settings.rootPath, function( req, res ){
-	console.log("sending index over ...")
-	// res.status(400).end()
     res.sendfile(serveFolder+indexFile, { root: "."});
 });
 
+// route for dashboard
+app.get( "/dashboard", function( req, res ){
+		console.log("re-routing to dashboard");
+    res.redirect(302, "/#/dashboard");
+});
+
+// send a 404 for any other routes that is not found and reroute to home.
 app.get('*', function(req, res, next) {
-	console.log("there was here alll catch ***************")
-	res.status(404);
-	// res.sendfile(serveFolder+"/index.htm", { root: "."});
-	// res.sendfile(serveFolder+'/index.htm', { root: "."});
- //  var err = new Error();
- //  console.log(err.status);
- //  err.status = 404;
- //  next(err);
- // res.status(400).end()
+	console.log("404: "+req.originalUrl+ " was not found")
+	res.status(404).redirect("/#/404");	
+});
+
+// error handling template
+/*
+app.get('*', function(req, res, next) {
+  var err = new Error();
+  err.status = 404;
+  next(err);
 });
  
 // handling 404 errors
-// app.use(function(err, req, res, next) {
-//   if(err.status !== 404) {
-//     return next();
-//   }
-//   res.send(err.message || 'nothing found ....');
-// });
-
-/*
-app.get('/partials/:partial', function(req, res) {
-    return res.render('partials/' + req.params['partial']);
-};
+app.use(function(err, req, res, next) {
+  if(err.status !== 404) {
+    return next();
+  }
+ 
+  res.send(err.message || '** no unicorns here **');
+});
 */
 
 
