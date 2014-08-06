@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+// import settings and get express.
+var settings = require('../settings');
+var app = require('express')();
+// set the routes and the port.
+require('../routes-offline')(app);
+app.set('port', settings.port || 3000);
+
+// run the server.
+var server = app.listen(app.get('port'), function() {
+  console.log('Express server listening on port ' + server.address().port);
+});
