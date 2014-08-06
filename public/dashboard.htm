@@ -1,1 +1,25 @@
-<h1> we are the dashboard</h1>
+<div ng-controller="DashboardCtrl">
+	<h2>list of books</h2>
+	<p>Getting data from the server...</p>
+			<table>
+				<tbody>
+					<tr ng-repeat="b in books"></tr>
+				</tbody>
+			</table>
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th>id</th>
+			      <th>Name</th>
+			      <th>Author</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr ng-repeat="b in books">
+			      <td>{{b.id}}</td>
+			      <td>{{b.name}}</td>
+			      <td>{{b.author}}</td>
+			    </tr>
+			  </tbody>
+			</table>
+</div>

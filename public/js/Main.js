@@ -1,4 +1,4 @@
-angular.module('MainApp', ['ui.bootstrap','ModuleOne', 'ngRoute'])
+angular.module('MainApp', ['ui.bootstrap','ModuleOne', 'ngRoute', 'ngResource'])
 .config(['$routeProvider', function($routeProvider) { $routeProvider
 	.when('/', { templateUrl:"template.htm" })
 	.when('/404', { templateUrl:"404.htm" })
