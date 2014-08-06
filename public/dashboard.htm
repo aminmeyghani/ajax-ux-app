@@ -1,25 +1,27 @@
 <div ng-controller="DashboardCtrl">
-	<h2>list of books</h2>
-	<p>Getting data from the server...</p>
-			<table>
-				<tbody>
-					<tr ng-repeat="b in books"></tr>
-				</tbody>
-			</table>
-			<table class="table">
-			  <thead>
-			    <tr>
-			      <th>id</th>
-			      <th>Name</th>
-			      <th>Author</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr ng-repeat="b in books">
-			      <td>{{b.id}}</td>
-			      <td>{{b.name}}</td>
-			      <td>{{b.author}}</td>
-			    </tr>
-			  </tbody>
-			</table>
-</div>
+  <div class="container">
+    <button class="btn btn-default" ng-click="me()">Get logged in user info</button>
+    <h1>Data:</h1>
+		<ul>
+			<li ng-repeat="d in myData">{{d}}</li>
+		</ul>
+
+    <h2>list of books</h2>
+    <p>Getting data from the server...</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="b in books">
+          <td>{{b.id}}</td>
+          <td>{{b.name}}</td>
+          <td>{{b.author}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

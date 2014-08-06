@@ -20,7 +20,7 @@
 
 	<div class="container" ng-show="isAppLoaded">
 		
-		<nav class="top-nav">
+		<nav class="top-nav" ng-controller="LoginCtrl">
 			<a class="btn btn-primary" href="/#/dashboard">dashboard</a>
 			<a class="btn btn-primary" href="/">home</a>
 			<a ng-show="!isLoggedin" ng-click="loginWithFB()" class="btn btn-primary" href>Log in with Facebook</a>
