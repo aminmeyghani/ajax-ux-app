@@ -6225,7 +6225,7 @@ section:after {
   }
 }
 body {
-  background-color: #e5e6e7;
+  background-color: #ffffff;
 }
 .mytable {
   width: 100%;
@@ -6257,4 +6257,8 @@ section {
 }
 .droplike-list dt:first-child {
   padding-top: 5px;
+}
+.top-nav {
+  padding: 10px;
+  background-color: #e5e6e7;
 }
