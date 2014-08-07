@@ -63,6 +63,14 @@ angular.module('MainModule', [])
     });
   }
   // test ajax request for my fb photos
+  /*
+  call with token
+  https://graph.facebook.com/me?access_token=ACCESS_TOKEN
+  https://graph.facebook.com/me?access_token=CAAD2yTgUcZBwBAJfHWiaOgl3dQ2tOR6RRMb3D5ucAb5ehjbZAjIt4PCWo63euaQbpB5lO9neFvjXHIDTKdSKJKAop60yR74ushbHnWD3Er45vZCVzVdAzJXPujMJUF0ZB6SqOJY9r1aXsb34ZChBLrEITovzrWcNVqMZAf3wsD7ZCVgjvwIQCC2hySk1cUZAzfKocZB0xMmH6Q5tf57snboPW
+  token example:
+  CAAD2yTgUcZBwBAJfHWiaOgl3dQ2tOR6RRMb3D5ucAb5ehjbZAjIt4PCWo63euaQbpB5lO9neFvjXHIDTKdSKJKAop60yR74ushbHnWD3Er45vZCVzVdAzJXPujMJUF0ZB6SqOJY9r1aXsb34ZChBLrEITovzrWcNVqMZAf3wsD7ZCVgjvwIQCC2hySk1cUZAzfKocZB0xMmH6Q5tf57snboPW
+  https://graph.facebook.com/me/home?access_token=322331021276495|2.AQAQ6FqN8IW-PUrR.3600.1309471200.0-137977022924629|0sbmdhJN6o9y9J4GDWs8xEygyX8
+  */
   $scope.getPhotos = function() {
     console.log("hello");
     
