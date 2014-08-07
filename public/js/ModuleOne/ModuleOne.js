@@ -13,7 +13,7 @@ angular.module('ModuleOne', [])
   }
 })
 
-.controller("MainCtrl", function ($scope, $http, $resource, $q, $timeout, Facebook, $location, Auth) {
+.controller("MainCtrl", function ($scope, $http, $resource, $q, $timeout, Facebook, $location, Auth, $rootScope) {
   $scope.$watch(function() {
     return Facebook.isReady();
   }, function(newVal) {
@@ -39,6 +39,14 @@ angular.module('ModuleOne', [])
     }
 
   }, true);
+
+  $rootScope.$on('$routeChangeStart', function (event) {
+        if ($location.url() == '/'){
+          $scope.isHome = true;
+        } else {
+          $scope.isHome = false;
+        }
+    });
 
 })
 

@@ -6254,10 +6254,14 @@ section:after {
   margin: 0 auto;
   font-size: 21px;
 }
-body {
+.home-bg {
   background: url('../img/bg.png') no-repeat;
   background-size: cover;
   color: white;
+}
+.dash-bg {
+  background-color: #000;
+  color: #fff;
 }
 .mytable {
   width: 100%;

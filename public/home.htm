@@ -6,7 +6,7 @@
 			Quisio makes learning a fun and a social activity. Start learning with your friends now and show off what you have learned !
 		</p>
 		<div class="text-center welcome-btns">
-			<button class="btn btn-outline" ng-click="loginWithFB()">Log in</button>
+			<button ng-if="!isLoggedin" class="btn btn-outline" ng-click="loginWithFB()">Log in</button>
 			<button class="btn btn-outline">Learn More</button>
 		</div>
 	</div>
