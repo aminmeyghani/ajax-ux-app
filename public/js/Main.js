@@ -2,6 +2,8 @@ angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource',
 
 // settings for the facebook api.
 .config(["FacebookProvider", function (FacebookProvider) {
+	// test user: john_cwsuaie_user@tfbnw.net
+	
 	var facebookAppID = '271344089723884';
   FacebookProvider.init(facebookAppID);
 }])

@@ -66,10 +66,38 @@ angular.module('MainModule', [])
   /*
   call with token
   https://graph.facebook.com/me?access_token=ACCESS_TOKEN
-  https://graph.facebook.com/me?access_token=CAAD2yTgUcZBwBAJfHWiaOgl3dQ2tOR6RRMb3D5ucAb5ehjbZAjIt4PCWo63euaQbpB5lO9neFvjXHIDTKdSKJKAop60yR74ushbHnWD3Er45vZCVzVdAzJXPujMJUF0ZB6SqOJY9r1aXsb34ZChBLrEITovzrWcNVqMZAf3wsD7ZCVgjvwIQCC2hySk1cUZAzfKocZB0xMmH6Q5tf57snboPW
-  token example:
-  CAAD2yTgUcZBwBAJfHWiaOgl3dQ2tOR6RRMb3D5ucAb5ehjbZAjIt4PCWo63euaQbpB5lO9neFvjXHIDTKdSKJKAop60yR74ushbHnWD3Er45vZCVzVdAzJXPujMJUF0ZB6SqOJY9r1aXsb34ZChBLrEITovzrWcNVqMZAf3wsD7ZCVgjvwIQCC2hySk1cUZAzfKocZB0xMmH6Q5tf57snboPW
-  https://graph.facebook.com/me/home?access_token=322331021276495|2.AQAQ6FqN8IW-PUrR.3600.1309471200.0-137977022924629|0sbmdhJN6o9y9J4GDWs8xEygyX8
+
+  https://graph.facebook.com/me?access_token=CAAD2yTgUcZBwBABA03aZC0hd4q5n009wg9sJUCdKwsYpIPApqxhZAWFgzaa3Jji9XXhj8SBa23qn5zbKCRiK70O5zj01qn7Pv8CZBp5sWF33hLDs1Ye2tt99i3mGlrzbTkGXxZBAzAezNoUF6W1Sv3WNaSW49DM9nuax7VsFIoMV8GE01uio6RuZAbjpTDuzta6g4pOr6ShHNJeIhDUPCe
+
+
+  // get friends
+  https://graph.facebook.com/me/friends?access_token=CAAD2yTgUcZBwBABA03aZC0hd4q5n009wg9sJUCdKwsYpIPApqxhZAWFgzaa3Jji9XXhj8SBa23qn5zbKCRiK70O5zj01qn7Pv8CZBp5sWF33hLDs1Ye2tt99i3mGlrzbTkGXxZBAzAezNoUF6W1Sv3WNaSW49DM9nuax7VsFIoMV8GE01uio6RuZAbjpTDuzta6g4pOr6ShHNJeIhDUPCe
+
+  // getting friends likes
+  FB.api("/likes?ids=533856945,841978743")
+
+  FB.api("me/friends",{
+    fields:'id',
+    limit:10
+  },function(res){
+    var l=''
+    $.each(res.data,function(idx,val){
+       l=l+val.id+(idx<res.data.length-1?',':'')
+    })
+    FB.api("likes?ids="+l,function(res){
+        console.log(res);
+    })
+  })
+  
+  
+
+  
+
+  // asking for permission for user likes and email
+  FB.login(function(response) {
+    // handle the response
+  }, {scope: 'email,user_likes'});
+  
   */
   $scope.getPhotos = function() {
     console.log("hello");
@@ -81,6 +109,12 @@ angular.module('MainModule', [])
       })
     }
 
+    // ask permission for accessing user likes
+    $scope.askForLikes = function () {
+      FB.login(function(response) {
+        // handle the response
+      }, {scope: 'email,user_likes,user_friends'});
+    };
   
  }])
 
