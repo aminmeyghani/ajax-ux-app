@@ -61,7 +61,19 @@ angular.module('MainModule', [])
     Facebook.api('/me', function(response) {
       $scope.myData = response;
     });
-  };
+  }
+  // test ajax request for my fb photos
+  $scope.getPhotos = function() {
+    console.log("hello");
+    
+    $q.all([$http({method: "GET",url: "http://graph.facebook.com/322331021276495/photos"})
+      ]).then(function(response) {
+        $scope.photos = response[0].data;
+        console.log($scope.photos);
+      })
+    }
+
+  
  }])
 
 .controller('LoginCtrl', [ '$scope', 'Auth','Facebook','$location', function ($scope, Auth, Facebook, $location) {
