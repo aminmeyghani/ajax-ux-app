@@ -1,6 +1,10 @@
 <nav class="top-nav">
-	<a class="btn btn-primary" href="/#/dashboard">dashboard</a>
-	<a class="btn btn-primary" href="/">home</a>
-	<a ng-show="!isLoggedin" ng-click="loginWithFB()" class="btn btn-primary" href>Log in with Facebook</a>
-	<a ng-show="isLoggedin"  ng-click="logout()" class="btn btn-primary" href>Log out</a>
+	
+	
+	<a href="/"> <img src="img/logo.png" alt=""> </a>
+	<div class="pull-right">
+		<a ng-show="isLoggedin" class="btn btn-primary" href="/#/dashboard">dashboard</a>
+		<a ng-show="!isLoggedin" ng-click="loginWithFB()" class="btn btn-primary" href>Log in with Facebook</a>
+		<a ng-show="isLoggedin"  ng-click="logout()" class="btn btn-primary" href>Log out</a>
+	</div>
 </nav>

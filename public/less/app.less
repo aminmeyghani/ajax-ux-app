@@ -4,10 +4,31 @@
 @border-radius-large:       0;
 @border-radius-small:       0;
 
+// typography
+@font-family-sans-serif:  'Dosis', sans-serif;
+
+
+.welcome {
+	font-family: 'Source Sans Pro', sans-serif;
+	text-transform: uppercase;
+	font-weight: 100;
+	color: #fff;
+	padding-top: 11%;
+	font-size: 46px;
+	opacity: 0.7;
+}
+.welcome-sub {
+	width: 46%;
+	margin: 0 auto;
+	font-size: 21px;
+}
 
 @b : #fff;
 body {
-	background-color: @b;
+	
+	background: url('../img/bg.png') no-repeat;
+	background-size: cover;
+	color: white;
 }
 .mytable {
 	width: 100%;
@@ -48,6 +69,7 @@ section {
 
 .top-nav {
 	padding: 10px;
+	padding-bottom: 20px;
+	margin-top: 40px;
 	
-	background-color: #e5e6e7;
 }
