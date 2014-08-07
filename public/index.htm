@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ajax App</title>
+	<link rel="shortcut icon" href="icon.png">
 	<script src="//localhost:35729/livereload.js"></script>
 	<link rel="stylesheet" href="css/app.css">
 	<script src="lib/jquery/jquery-2.0.3.js"></script>
@@ -17,21 +18,14 @@
 	<script src="js/Main.js"></script>
 </head>
 <body ng-controller="MainCtrl">
-
-	<div class="container" ng-show="isAppLoaded">
-		
-		<nav class="top-nav" ng-controller="LoginCtrl">
-			<a class="btn btn-primary" href="/#/dashboard">dashboard</a>
-			<a class="btn btn-primary" href="/">home</a>
-			<a ng-show="!isLoggedin" ng-click="loginWithFB()" class="btn btn-primary" href>Log in with Facebook</a>
-			<a ng-show="isLoggedin"  ng-click="logout()" class="btn btn-primary" href>Log out</a>
-		</nav>
+	<div class="container" ng-show="isAppLoaded" ng-controller="LoginCtrl">
 		<div ng-view></div>
 	</div>
 	<div class="container" ng-show="!isAppLoaded">
-		<img src="img/loading.gif" alt="">
+		<div class="text-center" style="margin-top:20%">
+			<img src="img/loading.gif" alt="">
+		</div>
 	</div>
 </body>
-<!-- <script src="js/fb/api.js"></script> -->
 </html>
 

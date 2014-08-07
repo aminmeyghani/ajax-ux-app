@@ -14,18 +14,16 @@ angular.module('ModuleOne', [])
 })
 
 .controller("MainCtrl", function ($scope, $http, $resource, $q, $timeout, Facebook, $location, Auth) {
-  $scope.main = "Main from module controller ...";
-  // $scope.isLoggedin = FB.getUserID() === true
-
   $scope.$watch(function() {
     return Facebook.isReady();
   }, function(newVal) {
-    if(Facebook.isReady()){
-    	$scope.isLoggedin = !!FB.getUserID() === true
-    	$scope.isAppLoaded = true;
-      
-      Auth.setUser(!!FB.getUserID() === true)
-    }
+      if(Facebook.isReady()) {
+        // initially checks to see if the user is logged in.
+        Auth.setUser(!!FB.getUserID() === true)
+        $scope.isLoggedin = Auth.isLoggedIn();
+        // finally app is loaded.
+        $scope.isAppLoaded = true;
+      }
   });
 
   $scope.$watch(Auth.isLoggedIn, function (value, oldValue) {
@@ -34,11 +32,9 @@ angular.module('ModuleOne', [])
       console.log("Disconnect");
       $location.path('/');
     }
-
+    // when logged in.
     if(value) {
-      // when refreshing the page.
       console.log("Connect");
-      //Do something when the user is connected
       $location.path("/dashboard");
     }
 
@@ -52,7 +48,6 @@ angular.module('ModuleOne', [])
   ]).then(function(response) {$scope.books = response[0].data;});
   // function for getting user data
   $scope.me = function() {
-
     Facebook.api('/me', function(response) {
       $scope.myData = response;
     });
@@ -60,24 +55,19 @@ angular.module('ModuleOne', [])
  })
 
 .controller('LoginCtrl', [ '$scope', 'Auth','Facebook','$location', function ($scope, Auth, Facebook, $location) {
-
   $scope.loginWithFB = function () {
-    console.log("loging in ...")
     Facebook.login(function(response) {
       if (response.status == 'connected') {
-        $scope.isLoggedin = 1;
-        console.log($scope.isLoggedin);
-
-        Facebook.api('/me', function(response) {
-          $scope.myData = response;
-        });
-
+        console.log("loging in ...")
+        // when connected, set the service value to true.
         Auth.setUser(true);
+        $scope.isLoggedin = Auth.isLoggedIn();
 
+        // go to user dashboard.
         $location.url("/dashboard")
       } else {
-        $scope.isLoggedin = 0;
-        console.log($scope.isLoggedin)
+        Auth.setUser(false);
+        $scope.isLoggedin = Auth.isLoggedIn();
       }
     });
   };
@@ -86,8 +76,8 @@ angular.module('ModuleOne', [])
     console.log("loging out ...")
     Facebook.logout(function(response) {
       console.log("logged out");
-      $scope.isLoggedin = 0;
       Auth.setUser(false);
+      $scope.isLoggedin = Auth.isLoggedIn();
       $location.url("/");
     });
   };
