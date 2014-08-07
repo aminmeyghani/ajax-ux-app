@@ -1,27 +1,30 @@
-angular.module('MainApp', ['ui.bootstrap','ModuleOne', 'ngRoute', 'ngResource', 'facebook'])
+angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource', 'facebook'])
 
+// settings for the facebook api.
+.config(["FacebookProvider", function (FacebookProvider) {
+	var facebookAppID = '271344089723884';
+  FacebookProvider.init(facebookAppID);
+}])
+
+// control the state of the logged in user (checks if logged in or not)
+// TODO: This could go to the main controller...
 .run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function (event) {
-	    	
-        if (!Auth.isLoggedIn()) {
-            event.preventDefault();
-            $location.path('/');
-        }
-        else {
-            console.log('ALLOW');
-            // $location.path('/dashboard');
-        }
+	    if (!Auth.isLoggedIn()) {
+	      event.preventDefault();
+	      $location.path('/');
+	    }
+	    else {
+	      console.log('Accessible');
+	      // $location.path('/dashboard');
+	    }
     });
 }])
 
+// Set the routes
 .config(['$routeProvider', function($routeProvider) { $routeProvider
 	.when('/', { templateUrl:"home.htm" })
-	.when('/404', { templateUrl:"404.htm" })
 	.when('/dashboard', { templateUrl:"dashboard.htm" })
+	.when('/404', { templateUrl:"404.htm" })
 	.otherwise({redirectTo:'/404'});
 }])
-
-// settings for the facebook api.
-.config(function(FacebookProvider) {
-  FacebookProvider.init('271344089723884');
-})

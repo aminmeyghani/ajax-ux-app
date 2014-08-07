@@ -16,7 +16,7 @@
 	<script src="lib/angular-fb/angular-facebook.js"></script>
 	<script src="lib/ui-bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 
-	<script src="js/ModuleOne/ModuleOne.js"></script>
+	<script src="js/MainModule/MainModule.js"></script>
 	<script src="js/Main.js"></script>
 </head>
 <body ng-controller="MainCtrl" ng-class="isHome ? 'home-bg' : 'dash-bg' ">
@@ -26,9 +26,9 @@
 	<div class="container" ng-show="!isAppLoaded">
 		<div class="text-center" style="margin-top:20%">
 			<!-- <img src="img/loading.gif" alt=""> -->
+			<p class="loader"></p>
 			<p>loading ...</p>
 		</div>
 	</div>
 </body>
 </html>
-
