@@ -126,7 +126,29 @@ angular.module('MainModule', [])
 .controller("DashboardCtrl", [ "$scope", "$http", "$q", "Facebook", "Auth", function ($scope, $http, $q, Facebook, Auth) {
   // get list of my facebook friends.
   Auth.runQuery("/me", function(d){ $scope.me = d});
+  // get list of friends.
   Auth.runQuery("/me/friends", function(d){ $scope.myFriends = d.data});
+  // get friends books.
+  $scope.friendsBooks = [];
+  Auth.runQuery("/me/friends", function(friends){ 
+    friends.data.forEach(function (f) {
+      Auth.runQuery("/"+f.id+"/books", function(books){ 
+        books.data.forEach(function (b) {
+          Auth.runQuery("/"+b.id, function(page){ 
+            $scope.friendsBooks.push({
+              book: b,
+              friend: f,
+              bookPage: page
+            });
+            
+          })
+        });
+      })
+    });
+  });
+
+
+
 
   // Getting the list of books asynchronously by calling the REST API from MYSQL
   // Express takes care of the rest after the SQL query is run with node.

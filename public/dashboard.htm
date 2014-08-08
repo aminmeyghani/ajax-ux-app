@@ -49,6 +49,9 @@
       </div>
       <div class="col-sm-6">
         <h2>list of their books</h2>
+        <ul>
+          <li ng-repeat="fb in friendsBooks">{{fb.friend.name}} : {{fb.book.name}} : <img ng-src="{{fb.bookPage.cover.source}}" style="width:50px" alt=""> : <a href="{{fb.bookPage.link}}">Book</a></li>
+        </ul>
       </div>
     </div>
   </div>
