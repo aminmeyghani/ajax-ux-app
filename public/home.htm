@@ -1,9 +1,11 @@
 <div>
-	<div ng-include="'topnav.htm'"></div>
-	<div class="text-center">
-		<h1 class="welcome">let’s Read the World </h1>
+	<div ng-show="isAppLoaded" class="animate-show-top">
+		<div  ng-include="'topnav.htm'"></div>	
+	</div>
+	<div class="text-center" ng-show="isAppLoaded">
+		<h1 class="welcome" >let’s Read the World </h1>
 		<p class="welcome-sub">
-			Quisio makes learning a fun and a social activity. Start learning with your friends now and show off what you have learned !
+			Quisio makes learning a fun and a social activity. Start learning with your friends now and show off what you have learned !	
 		</p>
 		<div class="text-center welcome-btns">
 			<button ng-if="!isLoggedin" class="btn btn-outline" ng-click="loginWithFB()">Log in</button>

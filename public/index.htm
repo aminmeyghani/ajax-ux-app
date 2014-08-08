@@ -21,17 +21,19 @@
 	<script src="js/Main.js"></script>
 </head>
 <body ng-controller="MainCtrl" ng-class="isHome ? 'home-bg' : 'dash-bg' ">
-	<div class="container" ng-show="isAppLoaded" ng-controller="LoginCtrl">
+	<div class="container"  ng-controller="LoginCtrl">
 		
 		<div  ng-view></div>	
 		
 		
 	</div>
 	<div class="container" ng-show="!isAppLoaded">
-		<div class="text-center" style="margin-top:20%">
+		<div class="text-center" style="margin-top:26%">
 			<!-- <img src="img/loading.gif" alt=""> -->
-			<p class="loader"></p>
-			<p>loading ...</p>
+			<p>Loading ...</p>
+			<p class="loader" style="margin:-7em auto"></p>
+
+			
 		</div>
 	</div>
 </body>

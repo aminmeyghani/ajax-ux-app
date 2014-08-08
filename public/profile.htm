@@ -1,7 +1,7 @@
 <div ng-controller="ProfileCtrl">
 	<div ng-include="'topnav.htm'"></div>
 	<p class="loader loader-small" ng-show="!!!me"></p>
-	<ul ng-show="!!me">
+	<ul ng-show="!!me" class="animate-show-left">
 		<li ng-repeat="(k,v) in me">
 			{{k}}: {{v}}
 		</li>

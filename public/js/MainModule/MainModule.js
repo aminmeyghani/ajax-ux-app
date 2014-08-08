@@ -65,6 +65,7 @@ angular.module('MainModule', [])
         Auth.setLoginPic(function(pic) {  $scope.myPicture = (!!FB.getUserID() === true) ? ( pic) : (0)});
         // finally app is loaded.
         $scope.isAppLoaded = true;
+        
         //
       }
   });
