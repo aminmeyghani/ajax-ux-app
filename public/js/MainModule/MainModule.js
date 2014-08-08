@@ -29,7 +29,16 @@ angular.module('MainModule', [])
           console.log("Please log in to your facebook account.")
         }
       })
+    },
+    setLoginPic: function (callback) {
+      var thiz = this;
+      Facebook.getLoginStatus(function(response){
+        if (response.status === 'connected') {
+          thiz.runQuery("/me/picture", function (pic) {callback( pic.data.url)});
+        }
+      })
     }
+
 
   }
 })

@@ -10,16 +10,20 @@ angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource',
 
 // control the state of the logged in user (checks if logged in or not)
 // TODO: This could go to the main controller...
-.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
+.run(['$rootScope', '$location', 'Auth', 'Facebook', function ($rootScope, $location, Auth, Facebook) {
     $rootScope.$on('$routeChangeStart', function (event) {
-	    if (!Auth.isLoggedIn()) {
-	      // event.preventDefault();
-	      // $location.path('/');
-	    }
-	    else {
-	      console.log('Accessible');
-	      // $location.path('/dashboard');
-	    }
+    	Facebook.getLoginStatus(function(response){
+    	  if (!Auth.isLoggedIn()) {
+    	    event.preventDefault();
+    	    $location.url('/');
+    	  }
+    	  else {
+    	    console.log('Accessible');
+    	    // $location.path('/dashboard');
+    	  }
+
+    	})
+	    
     });
 }])
 
