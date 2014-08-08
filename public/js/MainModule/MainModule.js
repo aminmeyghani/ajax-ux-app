@@ -30,7 +30,35 @@ angular.module('MainModule', [])
         }
       })
     }
+    // raw query set up for getting friends books
+    /*
+      var friendsBooks = [];
+      FB.api("me/friends", function(friends) {
+        if (friends && !friends.error) {
+          friends.data.forEach(function(f) {
+            FB.api(f.id + "/books", function(books) {
+              if (books && !books.error) {
+                books.data.forEach(function(b) {
+                  FB.api("/"+b.id, function(page) {
+                    if (page && !page.error) {
+                      friendsBooks.push({
+                        friend: f,
+                        book: b,
+                        bookPage: page
+                      });
+                      console.log(friendsBooks)
+                    }
+                  })
+                });
+              }
+            });
+          });
+        }
+      });
+    */
     // test ajax request for my fb photos
+    // get a user's picture.
+    // graph.facebook.com/345157298969677/picture?type=large
     /*
     call with token
     https://graph.facebook.com/me?access_token=ACCESS_TOKEN
@@ -79,13 +107,8 @@ angular.module('MainModule', [])
         // finally app is loaded.
         $scope.isAppLoaded = true;
         //
-        
-
       }
   });
-
-
-
 
   // Control for authentication routing. Let users go to dashboard only if they are logged in.
   $scope.$watch(Auth.isLoggedIn, function (value, oldValue) {
@@ -101,44 +124,27 @@ angular.module('MainModule', [])
 }])
 // Higher level controller for the dashboard.
 .controller("DashboardCtrl", [ "$scope", "$http", "$q", "Facebook", "Auth", function ($scope, $http, $q, Facebook, Auth) {
-  // call facebook api when it is ready ...
-Auth.runQuery("/me", function(friends){ $scope.myFriends  = friends});
+  // get list of my facebook friends.
+  Auth.runQuery("/me", function(d){ $scope.me = d});
+  Auth.runQuery("/me/friends", function(d){ $scope.myFriends = d.data});
 
-// get the data when the user is logged in and the access token is ready.
-// run the fb queries here inside the loginStatus callback ...
-
-
-
-
-  
-  // Getting the list of books asynchronously by calling the REST API.
+  // Getting the list of books asynchronously by calling the REST API from MYSQL
   // Express takes care of the rest after the SQL query is run with node.
   $q.all([$http({method: "GET",url: "/books"})
   ]).then(function(response) {$scope.books = response[0].data;});
-  // Get my data from facebook ...
-  // get a user's picture.
-  // graph.facebook.com/345157298969677/picture?type=large
-  $scope.getMyData = function() {
-    Facebook.api('/me', function(response) {
-      $scope.myData = response;
-    });
-  }
-
   
-  $scope.getPhotos = function() {
-    console.log("hello");
-    
+  // ajax call to get my facebook photo.
+  $scope.getPhoto = function() {
     $q.all([$http({method: "GET",url: "http://graph.facebook.com/322331021276495/photos"})
       ]).then(function(response) {
         $scope.photos = response[0].data;
-        console.log($scope.photos);
       })
     }
 
     // ask permission for accessing user likes
+    // see what your friends are up to ...
     $scope.askForLikes = function () {
       FB.login(function(response) {
-        // handle the response
       }, {scope: 'email,user_likes,user_friends'});
     };
   
@@ -172,6 +178,8 @@ Auth.runQuery("/me", function(friends){ $scope.myFriends  = friends});
     });
   };
 }])
+
+// controller for another page ...
 .controller("RandomCtrl",["$scope", "Auth", function ($scope, Auth) {
   Auth.runQuery("/me/friends", function(friends){ $scope.myFriends  = friends.data});
 }])
