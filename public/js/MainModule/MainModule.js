@@ -61,12 +61,9 @@ angular.module('MainModule', [])
         // initially checks to see if the user is logged in.
         Auth.setUser(!!FB.getUserID() === true)
         $scope.isLoggedin = Auth.isLoggedIn();
-
         Auth.setLoginPic(function(pic) {  $scope.myPicture = (!!FB.getUserID() === true) ? ( pic) : (0)});
         // finally app is loaded.
         $scope.isAppLoaded = true;
-        
-        //
       }
   });
 
@@ -78,9 +75,10 @@ angular.module('MainModule', [])
 
 
   // Everytime route changes test and see if we are on the homepage.
-  $rootScope.$on('$routeChangeStart', function () {
-    $scope.isHome = ($location.url() == "/") ? (true) : (false);  
-  });
+    $rootScope.$on('$routeChangeStart', function () {
+      $scope.isHome = ($location.url() == "/") ? (true) : (false);  
+    });
+  
 }])
 // Higher level controller for the dashboard.
 .controller("DashboardCtrl", [ "$scope", "$http", "$q", "Facebook", "Auth", function ($scope, $http, $q, Facebook, Auth) {

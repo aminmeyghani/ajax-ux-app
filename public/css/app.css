@@ -6258,6 +6258,8 @@ section:after {
   background: url('../img/bg.png') no-repeat;
   background-size: cover;
   color: white;
+  -webkit-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
 }
 .dash-bg {
   background-color: #000;

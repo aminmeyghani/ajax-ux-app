@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="MainApp">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Ajax App</title>
-	<link rel="shortcut icon" href="icon.png">
-	<link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
-	<script src="//localhost:35729/livereload.js"></script>
-	<link rel="stylesheet" href="css/app.css">
-	<script src="lib/jquery/jquery-2.0.3.js"></script>
-	<script src="lib/underscore/underscore-min.js"></script>
-	<script src="lib/angular-1.2.16/angular.js" ></script>
-	<script src="lib/angular-1.2.16/angular-route.js"></script>
-	<script src="lib/angular-1.2.16/angular-resource-1.2.16/angular-resource.js"></script>
-	<script src="lib/angular-1.2.16/angular-animate.js"></script>
-	<script src="lib/angular-fb/angular-facebook.js"></script>
-	<script src="lib/ui-bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+  <meta charset="UTF-8">
+  <title>Ajax App</title>
+  <link rel="shortcut icon" href="icon.png">
+  <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+  <script src="//localhost:35729/livereload.js"></script>
+  <link rel="stylesheet" href="css/app.css">
+  <script src="lib/jquery/jquery-2.0.3.js"></script>
+  <script src="lib/underscore/underscore-min.js"></script>
+  <script src="lib/angular-1.2.16/angular.js"></script>
+  <script src="lib/angular-1.2.16/angular-route.js"></script>
+  <script src="lib/angular-1.2.16/angular-resource-1.2.16/angular-resource.js"></script>
+  <script src="lib/angular-1.2.16/angular-animate.js"></script>
+  <script src="lib/angular-fb/angular-facebook.js"></script>
+  <script src="lib/ui-bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 
-	<script src="js/MainModule/MainModule.js"></script>
-	<script src="js/Main.js"></script>
+  <script src="js/MainModule/MainModule.js"></script>
+  <script src="js/Main.js"></script>
 </head>
-<body ng-controller="MainCtrl" ng-class="isHome ? 'home-bg' : 'dash-bg' ">
-	<div class="container"  ng-controller="LoginCtrl">
-		
-		<div  ng-view></div>	
-		
-		
-	</div>
-	<div class="container" ng-show="!isAppLoaded">
-		<div class="text-center" style="margin-top:26%">
-			<!-- <img src="img/loading.gif" alt=""> -->
-			<p>Loading ...</p>
-			<p class="loader" style="margin:-7em auto"></p>
 
-			
-		</div>
-	</div>
+<body ng-controller="MainCtrl">
+  <div ng-class="isHome ? 'home-bg' : 'dash-bg' " style="height:100vh" class="main">
+    <div class="container" ng-controller="LoginCtrl">
+      <div ng-view></div>
+    </div>
+    <div class="container">
+      <div class="text-center" style="margin-top:26%">
+        <!-- <img src="img/loading.gif" alt=""> -->
+        <!-- <p>Loading ...</p>
+			<p class="loader" style="margin:-7em auto"></p> -->
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
