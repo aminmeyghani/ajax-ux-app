@@ -3,18 +3,27 @@ angular.module('MainModule', [])
 // service to keep track of the state of the user.
 .factory('Auth', function(){
   var user;
+  var my = {};
   return{
     setUser : function(aUser) {
       user = aUser;
     },
     isLoggedIn : function(){
       return(user)? user : false;
-    }
+    },
+    setMy: function (attr, val) {
+      my[attr] = val;
+    },
+    getMy: function (attr) {
+      return my[attr]
+    },
+    getMe: function () {return my}
   }
 })
 
 // Main controller controlling the whole app. The highest level controller.
 .controller("MainCtrl", [ "$scope", "$http", "Facebook", "Auth", "$rootScope", "$location", "$timeout", function ($scope, $http, Facebook, Auth, $rootScope, $location, $timeout) {
+
   // for offline testing.
   // $scope.isAppLoaded = true;
   //
@@ -24,14 +33,20 @@ angular.module('MainModule', [])
   // for the ready event. When the API is ready, then the `FB` global object is ready to go !
   // The Facebook module is a wrapper for the `FB` object.
   $scope.$watch(function() {
-    return Facebook.isReady();
+    return Facebook.isReady() ;
   }, function(newVal) {
+    
       if(Facebook.isReady()) {
         // initially checks to see if the user is logged in.
         Auth.setUser(!!FB.getUserID() === true)
         $scope.isLoggedin = Auth.isLoggedIn();
         // finally app is loaded.
         $scope.isAppLoaded = true;
+        // setting some data for the app from users facbook.
+        // ----------------
+        // getting user friends.
+        // this works but it is not a good solution ...
+        
       }
   });
 
@@ -39,7 +54,7 @@ angular.module('MainModule', [])
   // Control for authentication routing. Let users go to dashboard only if they are logged in.
   $scope.$watch(Auth.isLoggedIn, function (value, oldValue) {
     if(!value && oldValue) { $location.path('/')}
-    if(value) { $location.path("/dashboard")}
+    if(value) { $location.path("/dashboard")  }
   }, true);
 
 
@@ -49,7 +64,26 @@ angular.module('MainModule', [])
   });
 }])
 // Higher level controller for the dashboard.
-.controller("DashboardCtrl", [ "$scope", "$http", "$q", "Facebook", function ($scope, $http, $q, Facebook) {
+.controller("DashboardCtrl", [ "$scope", "$http", "$q", "Facebook", "Auth", function ($scope, $http, $q, Facebook, Auth) {
+  // call facebook api when it is ready ...
+// Auth.getMe()
+$scope.isMeReady = false;
+// get the data when the user is logged in and the access token is ready.
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+      Facebook.api("/me/friends", function (r){
+        Auth.setMy("friends", r.data) ;
+        $scope.isMeReady = true;
+      });
+    } else if (response.status === 'not_authorized') {
+      console.log("Please confirm the app so that you can connect to it")
+    } else {
+      console.log("Please log in to your facebook account.")
+    }
+  });
+
+
+  $scope.me = Auth.getMe();
   // Getting the list of books asynchronously by calling the REST API.
   // Express takes care of the rest after the SQL query is run with node.
   $q.all([$http({method: "GET",url: "/books"})

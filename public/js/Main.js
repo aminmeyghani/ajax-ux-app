@@ -1,4 +1,4 @@
-angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource', 'facebook'])
+angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource', 'facebook','ngAnimate'])
 
 // settings for the facebook api.
 .config(["FacebookProvider", function (FacebookProvider) {
