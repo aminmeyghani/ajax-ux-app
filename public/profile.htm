@@ -1,0 +1,9 @@
+<div ng-controller="ProfileCtrl">
+	<div ng-include="'topnav.htm'"></div>
+	<p class="loader loader-small" ng-show="!!!me"></p>
+	<ul ng-show="!!me">
+		<li ng-repeat="(k,v) in me">
+			{{k}}: {{v}}
+		</li>
+	</ul>
+</div>

@@ -27,31 +27,28 @@
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <h1>me</h1>
-        <p class="loader-small" ng-show="!!!me"></p>
-        <p ng-show="!!me" class="animate-show-left">
-          <ul>
-            <li ng-repeat="(d,m) in me">
-              {{d}} : {{m}}
-            </li>
-          </ul>
-        </p>
         
         <h1>List of your friends</h1>
         <div>
           <p class="loader-small" ng-show="!!!myFriends"></p>
-          <ul ng-show="!!myFriends">
+          <div class="animate-show-left" ng-show="!!myFriends">
+          <ul>
             <li ng-repeat="f in myFriends">
               {{f.name}}
             </li>
-          </ul>  
+          </ul>    
+          </div>
+          
         </div>
       </div>
       <div class="col-sm-6">
         <h2>list of their books</h2>
-        <ul>
-          <li ng-repeat="fb in friendsBooks">{{fb.friend.name}} : {{fb.book.name}} : <img ng-src="{{fb.bookPage.cover.source}}" style="width:50px" alt=""> : <a href="{{fb.bookPage.link}}">Book</a></li>
-        </ul>
+        <p class="loader loader-small" ng-show="!friendsBooks.length"></p>
+        <div ng-show="friendsBooks.length" class="animate-show-left">
+          <ul>
+            <li ng-repeat="fb in friendsBooks">{{fb.friend.name}} : {{fb.book.name}} : <img ng-src="{{fb.bookPage.cover.source}}" style="width:50px" alt=""> : <a href="{{fb.bookPage.link}}">Book</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

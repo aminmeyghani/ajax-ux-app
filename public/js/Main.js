@@ -31,7 +31,7 @@ angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource',
 .config(['$routeProvider', function($routeProvider) { $routeProvider
 	.when('/', { templateUrl:"home.htm" })
 	.when('/dashboard', { templateUrl:"dashboard.htm" })
-	.when('/random', { templateUrl:"random.htm" })
+	.when('/profile', { templateUrl:"profile.htm" })
 	.when('/404', { templateUrl:"404.htm" })
 	.otherwise({redirectTo:'/404'});
 }])

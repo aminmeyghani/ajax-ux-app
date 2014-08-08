@@ -61,6 +61,8 @@ angular.module('MainModule', [])
         // initially checks to see if the user is logged in.
         Auth.setUser(!!FB.getUserID() === true)
         $scope.isLoggedin = Auth.isLoggedIn();
+
+        Auth.setLoginPic(function(pic) {  $scope.myPicture = (!!FB.getUserID() === true) ? ( pic) : (0)});
         // finally app is loaded.
         $scope.isAppLoaded = true;
         //
@@ -134,12 +136,14 @@ angular.module('MainModule', [])
         Auth.setUser(true);
         // ask the state of the user from Auth.
         $scope.isLoggedin = Auth.isLoggedIn();
+        Auth.setLoginPic(function(pic) {$scope.myPicture = pic})
         // redirect to dashboard on login.
         $location.url("/dashboard")
       } else {
         // log in wasn't successful ...
         Auth.setUser(false);
         $scope.isLoggedin = Auth.isLoggedIn();
+        $scope.myPicture = 0;
       }
     });
   };
@@ -149,12 +153,13 @@ angular.module('MainModule', [])
       console.log("logged out");
       Auth.setUser(false);
       $scope.isLoggedin = Auth.isLoggedIn();
+      $scope.myPicture = 0;
       $location.url("/");
     });
   };
 }])
 
 // controller for another page ...
-.controller("RandomCtrl",["$scope", "Auth", function ($scope, Auth) {
-  Auth.runQuery("/me/friends", function(friends){ $scope.myFriends  = friends.data});
+.controller("ProfileCtrl",["$scope", "Auth", function ($scope, Auth) {
+  Auth.runQuery("/me", function(res){ $scope.me  = res });
 }])
