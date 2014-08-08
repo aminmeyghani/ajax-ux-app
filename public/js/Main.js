@@ -13,8 +13,8 @@ angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource',
 .run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function (event) {
 	    if (!Auth.isLoggedIn()) {
-	      event.preventDefault();
-	      $location.path('/');
+	      // event.preventDefault();
+	      // $location.path('/');
 	    }
 	    else {
 	      console.log('Accessible');
@@ -27,6 +27,7 @@ angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource',
 .config(['$routeProvider', function($routeProvider) { $routeProvider
 	.when('/', { templateUrl:"home.htm" })
 	.when('/dashboard', { templateUrl:"dashboard.htm" })
+	.when('/random', { templateUrl:"random.htm" })
 	.when('/404', { templateUrl:"404.htm" })
 	.otherwise({redirectTo:'/404'});
 }])

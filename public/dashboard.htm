@@ -39,10 +39,10 @@
     <div class="row">
       <div class="col-sm-6">
         <h1>me</h1>
-        <p ng-show="isMeReady" class="animate-show-left">
-          {{me}}
+        <p ng-show="!!myFriends" class="animate-show-left">
+          {{myFriends}}
         </p>
-        <p class="loader-small" ng-show="!isMeReady"></p>
+        <p class="loader-small" ng-show="!!!myFriends"></p>
         <h1>List of your friends</h1>
         <ul>
           <li ng-repeat="f in myFriends">
