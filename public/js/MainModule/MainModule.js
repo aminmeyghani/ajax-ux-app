@@ -30,59 +30,7 @@ angular.module('MainModule', [])
         }
       })
     }
-    // raw query set up for getting friends books
-    /*
-      var friendsBooks = [];
-      FB.api("me/friends", function(friends) {
-        if (friends && !friends.error) {
-          friends.data.forEach(function(f) {
-            FB.api(f.id + "/books", function(books) {
-              if (books && !books.error) {
-                books.data.forEach(function(b) {
-                  FB.api("/"+b.id, function(page) {
-                    if (page && !page.error) {
-                      friendsBooks.push({
-                        friend: f,
-                        book: b,
-                        bookPage: page
-                      });
-                      console.log(friendsBooks)
-                    }
-                  })
-                });
-              }
-            });
-          });
-        }
-      });
-    */
-    // test ajax request for my fb photos
-    // get a user's picture.
-    // graph.facebook.com/345157298969677/picture?type=large
-    /*
-    call with token
-    https://graph.facebook.com/me?access_token=ACCESS_TOKEN
 
-
-    // get friends
-    https://graph.facebook.com/me/friends?access_token=CAAD2yTgUcZBwBABA03aZC0hd4q5n009wg9sJUCdKwsYpIPApqxhZAWFgzaa3Jji9XXhj8SBa23qn5zbKCRiK70O5zj01qn7Pv8CZBp5sWF33hLDs1Ye2tt99i3mGlrzbTkGXxZBAzAezNoUF6W1Sv3WNaSW49DM9nuax7VsFIoMV8GE01uio6RuZAbjpTDuzta6g4pOr6ShHNJeIhDUPCe
-
-    // getting friends likes
-    FB.api("/likes?ids=533856945,841978743")
-    FB.api("me/friends",{
-      fields:'id',
-      limit:10
-    },function(res){
-      var l=''
-      $.each(res.data,function(idx,val){
-         l=l+val.id+(idx<res.data.length-1?',':'')
-      })
-      FB.api("likes?ids="+l,function(res){
-          console.log(res);
-      })
-    })
-
-    */
   }
 })
 
@@ -140,15 +88,11 @@ angular.module('MainModule', [])
               friend: f,
               bookPage: page
             });
-            
           })
         });
       })
     });
   });
-
-
-
 
   // Getting the list of books asynchronously by calling the REST API from MYSQL
   // Express takes care of the rest after the SQL query is run with node.
