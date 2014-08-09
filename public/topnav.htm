@@ -7,7 +7,6 @@
 			<a ng-show="isLoggedin"  ng-class="activePage == 'books' ? 'active' : '' " class="pull-right btn btn-primary" href="/#/books">Books</a>
 			<a ng-show="isLoggedin"   ng-click="logout()" class="pull-right btn btn-primary" href>Log out</a>
 			<a ng-show="!isLoggedin"  ng-click="loginWithFB()" class="pull-right btn btn-primary" href>Log in with Facebook</a>
-			{{activePage}}
 		</div>
 	</nav>
 </div>

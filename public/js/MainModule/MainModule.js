@@ -167,9 +167,10 @@ angular.module('MainModule', ['MainApp'])
 }])
 
 // books
-.controller("BooksCtrl",["$scope", "Auth", "$q","$http", function ($scope, Auth, $q, $http) {
+.controller("BooksCtrl",["$scope", "Auth", "$q","$http","$timeout", function ($scope, Auth, $q, $http, $timeout) {
   // Getting the list of books asynchronously by calling the REST API from MYSQL
     // Express takes care of the rest after the SQL query is run with node.
+    $scope.isBooksReady = false;
     $q.all([$http({method: "GET",url: "/books"})
-    ]).then(function(response) {$scope.books = response[0].data;});
+    ]).then(function(response) {$scope.books = response[0].data; $timeout(function () {$scope.isBooksReady = true},500)});
 }])

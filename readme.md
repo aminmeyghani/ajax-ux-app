@@ -1,4 +1,4 @@
-# Ajax UX App
+# Quisio
 An ajax app with angular.
 
 1. clone the repo
