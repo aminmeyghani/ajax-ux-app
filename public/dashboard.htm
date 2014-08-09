@@ -1,34 +1,9 @@
 <div ng-controller="DashboardCtrl">
   <div ng-include="'topnav.htm'"></div>
   <div class="container">
-
-    <div class="row">
-      
-      <div class="col-sm-12">
-        <h2>list of books</h2>
-        <p>Getting data from the server...</p>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Name</th>
-              <th>Author</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="b in books">
-              <td>{{b.id}}</td>
-              <td>{{b.name}}</td>
-              <td>{{b.author}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
     <div class="row">
       <div class="col-sm-6">
-        
-        <h1>List of your friends</h1>
+        <h1>List of your friends {{global}}</h1>
         <div>
           <p class="loader-small" ng-show="!!!myFriends"></p>
           <div class="animate-show-left" ng-show="!!myFriends">
@@ -38,7 +13,6 @@
             </li>
           </ul>    
           </div>
-          
         </div>
       </div>
       <div class="col-sm-6">

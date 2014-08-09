@@ -1,24 +1,17 @@
-angular.module('MainModule', [])
+angular.module('MainModule', ['MainApp'])
 
 // service to keep track of the state of the user.
 .service('Auth', function(Facebook){
   var user;
   var my = {};
+  var activePage;
   return{
-    setUser : function(aUser) {
-      user = aUser;
-    },
-    isLoggedIn : function(){
-      return(user)? user : false;
-    },
-    setMy: function (attr, val) {
-      my[attr] = val;
-    },
-    getMy: function (attr) {
-      return my[attr]
-    },
+    setUser : function(aUser) {user = aUser;},
+    isLoggedIn : function(){return(user)? user : false;},
+    setMy: function (attr, val) {my[attr] = val;},
+    getMy: function (attr) {return my[attr]},
     getMe: function () {return my },
-    // wrapper for the fb api in a service so that it's always loaded !
+    // wrapper for calling api queries.
     runQuery: function (what, callback) {
       Facebook.getLoginStatus(function(response){
         if (response.status === 'connected') {
@@ -30,6 +23,7 @@ angular.module('MainModule', [])
         }
       })
     },
+    // Ajax in logged in user picture from the facebook account.
     setLoginPic: function (callback) {
       var thiz = this;
       Facebook.getLoginStatus(function(response){
@@ -37,18 +31,20 @@ angular.module('MainModule', [])
           thiz.runQuery("/me/picture", function (pic) {callback( pic.data.url)});
         }
       })
-    }
-
-
+    },
+    // set the current path (the active page)
+    setActivePage: function (p) { activePage = p},
+    // get the current path (the active page)
+    getActivePage: function () { return activePage },
   }
 })
 
 // Main controller controlling the whole app. The highest level controller.
-.controller("MainCtrl", [ "$scope", "$http", "Facebook", "Auth", "$rootScope", "$location", "$timeout", function ($scope, $http, Facebook, Auth, $rootScope, $location, $timeout) {
-
+.controller("MainCtrl", [ "$scope", "$http", "Facebook", "Auth", "$rootScope", "$location", "$timeout","$route", "$routeParams", function ($scope, $http, Facebook, Auth, $rootScope, $location, $timeout, $routeParams) {
   // for offline testing.
   // $scope.isAppLoaded = true;
   //
+  $scope.$routeParams = $routeParams;
 
   // checking if the Facebook wrapper is ready.
   // The facebook api is instantially asynchronously, because of that, we need to watch 
@@ -64,6 +60,7 @@ angular.module('MainModule', [])
         Auth.setLoginPic(function(pic) {  $scope.myPicture = (!!FB.getUserID() === true) ? ( pic) : (0)});
         // finally app is loaded.
         $scope.isAppLoaded = true;
+        
       }
   });
 
@@ -78,10 +75,19 @@ angular.module('MainModule', [])
     $rootScope.$on('$routeChangeStart', function () {
       $scope.isHome = ($location.url() == "/") ? (true) : (false);  
     });
+
+    // checking on routeprams
+    $scope.$on('$routeChangeSuccess', function() {
+      // Auth.setActivePage( $location.url() );
+      $scope.activePage = $location.url().substring(1, $location.url().length);
+    });
+    
   
 }])
 // Higher level controller for the dashboard.
-.controller("DashboardCtrl", [ "$scope", "$http", "$q", "Facebook", "Auth", function ($scope, $http, $q, Facebook, Auth) {
+.controller("DashboardCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", function ($rootScope, $scope, $http, $q, Facebook, Auth) {
+  // catching routeparams
+    
   // get list of my facebook friends.
   Auth.runQuery("/me", function(d){ $scope.me = d});
   // get list of friends.
@@ -104,10 +110,7 @@ angular.module('MainModule', [])
     });
   });
 
-  // Getting the list of books asynchronously by calling the REST API from MYSQL
-  // Express takes care of the rest after the SQL query is run with node.
-  $q.all([$http({method: "GET",url: "/books"})
-  ]).then(function(response) {$scope.books = response[0].data;});
+  
   
   // ajax call to get my facebook photo.
   $scope.getPhoto = function() {
@@ -158,7 +161,15 @@ angular.module('MainModule', [])
   };
 }])
 
-// controller for another page ...
+// Profile.
 .controller("ProfileCtrl",["$scope", "Auth", function ($scope, Auth) {
   Auth.runQuery("/me", function(res){ $scope.me  = res });
+}])
+
+// books
+.controller("BooksCtrl",["$scope", "Auth", "$q","$http", function ($scope, Auth, $q, $http) {
+  // Getting the list of books asynchronously by calling the REST API from MYSQL
+    // Express takes care of the rest after the SQL query is run with node.
+    $q.all([$http({method: "GET",url: "/books"})
+    ]).then(function(response) {$scope.books = response[0].data;});
 }])

@@ -3,10 +3,11 @@
 		<a href="/"> <img src="img/logo.png" alt=""> </a>
 		<div class="pull-right">
 			<a href="/#/profile"><img src="{{myPicture}}" class="pull-right animate-show-right" ng-show="myPicture" style="width:32px" alt="Profile Picture"></a>
-			<a ng-show="isLoggedin" class="pull-right btn btn-primary" href="/#/dashboard">dashboard</a>
-			<a ng-show="isLoggedin"  ng-click="logout()" class="pull-right btn btn-primary" href>Log out</a>
-			<a ng-show="!isLoggedin" ng-click="loginWithFB()" class="pull-right btn btn-primary" href>Log in with Facebook</a>
+			<a ng-show="isLoggedin"  ng-class="activePage == 'dashboard' ? 'active' : '' " class="pull-right btn btn-primary" href="/#/dashboard">Dasboard</a>
+			<a ng-show="isLoggedin"  ng-class="activePage == 'books' ? 'active' : '' " class="pull-right btn btn-primary" href="/#/books">Books</a>
+			<a ng-show="isLoggedin"   ng-click="logout()" class="pull-right btn btn-primary" href>Log out</a>
+			<a ng-show="!isLoggedin"  ng-click="loginWithFB()" class="pull-right btn btn-primary" href>Log in with Facebook</a>
+			{{activePage}}
 		</div>
 	</nav>
-
 </div>
