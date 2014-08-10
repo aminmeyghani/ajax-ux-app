@@ -1,23 +1,33 @@
 <style>
 .inner {
-  background-color: #36587A;
-  border: 1px solid #1E4D7F;
+  margin-top: 15px;
+  padding: 15px;
+  background: #2E4E6F;
+  border-radius: 4px;
+  border: 1px solid #0F425F;
 }
 </style>
 <div ng-controller="LibraryCtrl">
   <div ng-include="'topnav.htm'"></div>
+  <div ng-show="!!!isBooksReady">
+    <div style="width: 10px;margin: 0 auto;margin-top: 20%;">
+      <p class="loader loader-small" ></p>
+    </div>
+    <p style="margin: 0 auto;width: 31px;margin-top: 10px;">loading</p>
+  </div>
   <div class="container">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="loader-small" ng-show="!isBooksReady"></div>
-        <div ng-show="isBooksReady" class="animate-show-left">
-          <div style="
-          margin-top: 15px;
-          padding: 15px;
-          background: #2E4E6F;
-          border-radius: 4px;
-          border: 1px solid #0F425F;
-          ">
+    <div class="animate-show-left" ng-show="!!isBooksReady">
+      <div class="row">
+        
+        <div class="col-sm-8">
+          <div>
+            <div style="
+            margin-top: 15px;
+            padding: 15px;
+            background: #2E4E6F;
+            border-radius: 4px;
+            border: 1px solid #0F425F;
+            ">
             <table class="mytable">
               <thead>
                 <tr>
@@ -38,15 +48,15 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="row" style="margin-top:15px">
+        <div class="row">
           <div class="col-sm-6">
             <div class="inner">
-              <h2>Test</h2>
+              <h2>Friend Book</h2>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="inner">
-              <h2>Test</h2>
+              <h2>Friend Book</h2>
             </div>
           </div>
         </div>        
@@ -54,3 +64,7 @@
     </div>
   </div>
 </div>
+</div>
+<!-- <div ng-show="!!isBooksReady" class="animate-show-left text-ccenter" style="text-align: center;padding: 20%;">
+  coming soon ...
+</div> -->
