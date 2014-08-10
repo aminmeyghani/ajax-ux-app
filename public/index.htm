@@ -36,7 +36,7 @@
         <script src="lib/element-query/elementQuery.min.js"></script>
       </head>
 
-      <body ng-controller="MainCtrl" ng-class="isHome ? 'home-bg' : 'dash-bg' " class="main" ng-cloak>
+      <body ng-controller="MainCtrl" ng-class="isHome ? '' : 'dash-bg' " class="main" ng-cloak>
         <div id="page-wrapper" ng-class="toggle ? 'active' : ''" style="padding: {{ activePage === '' && !isLoggein ? '0' : ''  }}" ng-cloak ng-controller="LoginCtrl">
 
           <!-- Sidebar -->
