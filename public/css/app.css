@@ -1509,7 +1509,7 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 a {
-  color: #164966;
+  color: #2e3c4d;
   text-decoration: none;
   transition: opacity 200ms ease-out;
 }
@@ -1532,7 +1532,7 @@ a.inverted {
   color: #ffffff;
 }
 .light-list a {
-  color: #2885ba;
+  color: #546e8d;
 }
 /*
  ## table maker.
@@ -1566,7 +1566,7 @@ a.inverted {
   padding: 3px 10px;
 }
 .mytable thead {
-  background-color: #2885ba;
+  background-color: #546e8d;
 }
 .mytable td {
   width: 5%;
@@ -1819,7 +1819,7 @@ ul.sidebar .sidebar-list a:hover .menu-icon {
   transition: all 200ms ease-out;
 }
 .dash-bg {
-  background-color: #164966;
+  background-color: #2e3c4d;
   color: #ffffff;
 }
 .search-area {
@@ -1832,12 +1832,12 @@ ul.sidebar .sidebar-list a:hover .menu-icon {
   padding-top: 50px;
 }
 .top-nav-app {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #546e8d;
   height: 60px;
   padding: 12px;
 }
 .active-nav {
-  color: #2885ba;
+  color: #546e8d;
 }
 .profile-picture,
 .profile-picture-small,
