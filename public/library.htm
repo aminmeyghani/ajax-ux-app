@@ -2,7 +2,7 @@
   <div ng-include="'topnav.htm'"></div>
   <div class="container">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <h1>List of your friends </h1>
         
         <div>
@@ -16,19 +16,30 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <h2>See what books your friend likes</h2>
-        <p class="loader loader-small" ng-show="!friendsBooks.length"></p>
-        <div ng-show="friendsBooks.length" class="animate-show-left">
-          <table>
+        <p class="loader loader-small" ng-show="!mainData.length"></p>
+        <div ng-show="mainData.length" class="animate-show-left">
+          <ul>
+            <li ng-repeat="d in mainData">
+              {{d.friend.name}}: 
+              <ul style="padding-left:20px">
+                <li ng-repeat="b in d.books">
+                  {{b.name}}
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <!-- <table class="mytable">
             <tbody>
-              <tr ng-repeat="fb in friendsBooks">
+              <tr ng-repeat="fb in mainData">
                 <td>{{fb.friend.name}}</td>
                 <td>{{fb.book.name}}</td>
                 <td> <a href="{{fb.bookPage.link}}"><img ng-src="{{fb.bookPage.cover.source}}" style="width:50px" alt=""></a> </td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
+          
         </div>
       </div>
     </div>

@@ -46,6 +46,9 @@ angular.module('MainModule', ['MainApp'])
   //
   $scope.$routeParams = $routeParams;
 
+  // get the profile info
+  Auth.runQuery("/me", function(res){ $scope.firstName  = res.first_name });
+
   // checking if the Facebook wrapper is ready.
   // The facebook api is instantially asynchronously, because of that, we need to watch 
   // for the ready event. When the API is ready, then the `FB` global object is ready to go !
@@ -93,22 +96,32 @@ angular.module('MainModule', ['MainApp'])
   // get list of friends.
   Auth.runQuery("/me/friends", function(d){ $scope.myFriends = d.data});
   // get friends books.
-  $scope.friendsBooks = [];
+  var rawFriendsData = [];
   Auth.runQuery("/me/friends", function(friends){ 
     friends.data.forEach(function (f) {
       Auth.runQuery("/"+f.id+"/books", function(books){ 
         books.data.forEach(function (b) {
           Auth.runQuery("/"+b.id, function(page){ 
-            $scope.friendsBooks.push({
+            rawFriendsData.push({
               book: b,
               friend: f,
               bookPage: page
             });
+            var mydata = _.groupBy(rawFriendsData, function (x) {return x.friend.id} );
+            $scope.mainData = [];
+            // organize data for display.
+            for (var v in mydata) {
+              $scope.mainData.push(
+                { friend: mydata[v][0].friend, books: mydata[v].map(function (y) {return y.book} ) }
+              );
+            }
           })
         });
       })
     });
   });
+
+
 
   
   
