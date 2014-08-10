@@ -1,0 +1,64 @@
+/*
+*/
+@font-face {
+  font-family: "quisio";
+  src: url("quisio/quisio.eot");
+  src: url("quisio/quisio.eot?#iefix") format("embedded-opentype"), url("quisio/quisio.woff") format("woff"), url("quisio/quisio.ttf") format("truetype"), url("quisio/quisio.svg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.glyphicon,
+.glyphicon-address-book,
+.glyphicon-lock,
+.glyphicon-power-clean,
+.glyphicon-power,
+.glyphicon-facebook,
+.glyphicon-user,
+.glyphicon-book,
+.glyphicon-library,
+.glyphicon-friends,
+.glyphicon-books2,
+.glyphicon-books {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: "quisio";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-address-book:before {
+  content: "\e00a";
+}
+.glyphicon-lock:before {
+  content: "\e003";
+}
+.glyphicon-power-clean:before {
+  content: "\e002";
+}
+.glyphicon-power:before {
+  content: "\e001";
+}
+.glyphicon-facebook:before {
+  content: "\e006";
+}
+.glyphicon-user:before {
+  content: "\e000";
+}
+.glyphicon-book:before {
+  content: "\e009";
+}
+.glyphicon-library:before {
+  content: "\e004";
+}
+.glyphicon-friends:before {
+  content: "\e005";
+}
+.glyphicon-books2:before {
+  content: "\e007";
+}
+.glyphicon-books:before {
+  content: "\e008";
+}

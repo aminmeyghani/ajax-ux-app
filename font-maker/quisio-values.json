@@ -1,0 +1,68 @@
+{
+    "chars": [
+        {
+            "name": "glyphicon-address-book",
+            "value": "e00a",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-lock",
+            "value": "e003",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-power-clean",
+            "value": "e002",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-power",
+            "value": "e001",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-facebook",
+            "value": "e006",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-user",
+            "value": "e000",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-book",
+            "value": "e009",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-library",
+            "value": "e004",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-friends",
+            "value": "e005",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-books2",
+            "value": "e007",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-books",
+            "value": "e008",
+            "fontFamily": "quisio"
+        }
+    ],
+    "fonts": {
+        "svg": "quisio/quisio.svg",
+        "woff": "quisio/quisio.woff",
+        "eot": "quisio/quisio.eot",
+        "ttf": "quisio/quisio.ttf"
+    },
+    "fontFamily": "quisio",
+    "options": {},
+    "escapedFontFamily": "\"quisio\""
+}

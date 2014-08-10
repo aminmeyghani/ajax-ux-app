@@ -1,0 +1,35 @@
+// angular animations
+// am: ng-show hide animation commons
+.animate-show-top, .animate-show-left, .animate-show-right {
+  .smooth(@what: all);
+  .opacity(1);
+  position: relative;
+}
+
+.animate-show-top.ng-hide-add,
+.animate-show-top.ng-hide-remove,
+.animate-show-left.ng-hide-add,
+.animate-show-left.ng-hide-remove, 
+.animate-show-right.ng-hide-add,
+.animate-show-right.ng-hide-remove, 
+{
+  display:block!important;
+}
+
+.animate-show-top.ng-hide,
+.animate-show-left.ng-hide,
+.animate-show-right.ng-hide,
+{
+  .opacity(0);
+  transition-duration: 50ms;
+}
+
+// am: animate show/hide mixins for ng-show/ng-hide.
+.animate-show (@dir; @amnt: -15px) {
+ .animate-show-@{dir} { @{dir}: 0; }
+.animate-show-@{dir}.ng-hide { @{dir}: @amnt; }
+}
+
+.animate-show(top);
+.animate-show(left);
+.animate-show(right);

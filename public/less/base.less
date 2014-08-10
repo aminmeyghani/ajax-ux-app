@@ -1,0 +1,22 @@
+//mixins
+// hover states
+#hover{
+  .states(){
+    .smooth(@what: opacity);
+    &:hover{
+      .opacity(@hover-opacity);
+      cursor: pointer;
+      .smooth(@what: opacity);
+    }
+    &:active{
+      .opacity(@active-opacity);
+    }
+  }
+}
+
+// anchors
+a {
+	color : @color2;
+	text-decoration: none;
+	#hover.states();
+}

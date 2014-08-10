@@ -1,0 +1,71 @@
+@glyphicon-address-book-font-family: "quisio";
+@glyphicon-address-book-value: "\e00a";
+@glyphicon-address-book: '"quisio"' '"\\e00a"';
+@glyphicon-lock-font-family: "quisio";
+@glyphicon-lock-value: "\e003";
+@glyphicon-lock: '"quisio"' '"\\e003"';
+@glyphicon-power-clean-font-family: "quisio";
+@glyphicon-power-clean-value: "\e002";
+@glyphicon-power-clean: '"quisio"' '"\\e002"';
+@glyphicon-power-font-family: "quisio";
+@glyphicon-power-value: "\e001";
+@glyphicon-power: '"quisio"' '"\\e001"';
+@glyphicon-facebook-font-family: "quisio";
+@glyphicon-facebook-value: "\e006";
+@glyphicon-facebook: '"quisio"' '"\\e006"';
+@glyphicon-user-font-family: "quisio";
+@glyphicon-user-value: "\e000";
+@glyphicon-user: '"quisio"' '"\\e000"';
+@glyphicon-book-font-family: "quisio";
+@glyphicon-book-value: "\e009";
+@glyphicon-book: '"quisio"' '"\\e009"';
+@glyphicon-library-font-family: "quisio";
+@glyphicon-library-value: "\e004";
+@glyphicon-library: '"quisio"' '"\\e004"';
+@glyphicon-friends-font-family: "quisio";
+@glyphicon-friends-value: "\e005";
+@glyphicon-friends: '"quisio"' '"\\e005"';
+@glyphicon-books2-font-family: "quisio";
+@glyphicon-books2-value: "\e007";
+@glyphicon-books2: '"quisio"' '"\\e007"';
+@glyphicon-books-font-family: "quisio";
+@glyphicon-books-value: "\e008";
+@glyphicon-books: '"quisio"' '"\\e008"';
+
+.icon-font-family(@char) {
+  font-family: ~`@{char}[0]`;
+}
+
+.icon-font() {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon-content(@char) {
+  content: ~`@{char}[1]`;
+}
+
+.icon(@char) {
+  .icon-font-family(@char);
+  .icon-font();
+
+  &:before {
+    .icon-content(@char);
+  }
+}
+
+@font-face {
+  font-family: "quisio";
+  src:url("quisio/quisio.eot");
+  src:url("quisio/quisio.eot?#iefix") format("embedded-opentype"),
+    url("quisio/quisio.woff") format("woff"),
+    url("quisio/quisio.ttf") format("truetype"),
+    url("quisio/quisio.svg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

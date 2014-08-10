@@ -1,0 +1,128 @@
+/*
+# helpers #
+*/
+
+/*
+## `.limit-width()` ##
+### Parameters ###
+none.
+
+Page utility to set the width of the page to 100% limits the width of the page to 100%.
+*/
+.limit-width(){
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/*   
+##`.smooth([@what, @duration, @timing-function])`
+
+### Description ###
+
+Used to add CSS3 transition to the specified property.
+
+### Parameters: ###
+
+1. __@what__ (optional)  *string or non-string* : The CSS property to which we want to add the transition:
+The default value is `all` which applies the transition to all the properties.
+
+2. __@duration__ (optional) *integer* : The duration of the transition. The default value is 200ms.
+
+3. __@timing-function__ (optional) *string or non-string* : A valid timing function for the transition.
+The default value is `linear`.
+
+### Usage ###
+  Can be mixed in with other classes or ids or anywhere. Cannot be called by itself to generate 
+  classes or ids.s
+
+### Examples ###
+  // Example to set transition for the hover state of the anchor links.
+  // using all the parameters.
+  a, a:hover{
+    .smooth("color",250ms, "ease-out");
+  }
+
+  // Setting transitino for the background color of a box.
+  .box, .box:hover{
+    .smooth(@what: 'background-color');
+  }
+*/
+//mixins
+.smooth(@what; @duration : 200ms; @animation-type: ease-out) {
+   transition: @what @duration @animation-type;
+}
+
+// Simple Mixin for uppercasing text
+.upcase(){
+  text-transform: uppercase;
+}
+
+// Simple bold mixin. Not using the "()"
+// because we might also want to use it
+// inside our html.
+.bold(){
+  font-weight: bold;
+}
+// Centering content in a div 
+.center-all(){
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.center(@w) {
+  display : block;
+  width : @w;
+  margin : 0 auto;
+}
+
+// Simple mixin for display block
+.block(){
+  display: block;
+}
+
+// docs here
+.fix-float(){
+  content: "\00a0"; //escaped unicode for a single space character.
+  display: block;
+  visibility: hidden;
+  height:0;
+  clear:both;
+}
+.float-left(){
+  float : left;
+}
+
+// sets background color.
+.bg-color(@color) {
+  background-color: @color;
+}
+// inline-block
+// ----------------
+.inline-block() {
+  *display: inline; // IE7 inline-block hack 
+  *zoom: 1;
+  display: inline-block;
+}
+
+// IE7 likes to collapse whitespace on either side of the inline-block elements.
+// Ems because we're attempting to match the width of a space character. Left
+// version is for form buttons, which typically come after other elements, and
+// right version is for icons, which come before. Applying both is ok, but it will
+// mean that space between those elements will be .6em (~2 space characters) in IE7,
+// instead of the 1 space in other browsers.
+.ie7-restore-left-whitespace() {
+  *margin-left: .3em;
+
+  &:first-child {
+    *margin-left: 0;
+  }
+}
+
+.ie7-restore-right-whitespace() {
+  *margin-right: .3em;
+}
+// alignments
+.pull-left { float: left }
+.pull-right { float: right }
+.text-center {text-align: center }

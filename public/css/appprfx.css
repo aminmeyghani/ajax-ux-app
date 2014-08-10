@@ -60,7 +60,8 @@ dfn {
 }
 hr {
   -moz-box-sizing: content-box;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 0;
 }
 mark {
@@ -143,7 +144,9 @@ html input[disabled] {
 }
 input[type="checkbox"],
 input[type="radio"] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
 }
 input[type="search"] {
@@ -172,7 +175,9 @@ table {
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .container {
   margin-right: auto;
@@ -1336,14 +1341,16 @@ You can target the `width` property for example: `.make-fibo-for(@property : wid
 a {
   color: #2885ba;
   text-decoration: none;
-  transition: opacity 200ms ease-out;
+  -webkit-transition: opacity 200ms ease-out;
+          transition: opacity 200ms ease-out;
 }
 a:hover {
   opacity: 0.8;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   filter: alpha(opacity=80);
   cursor: pointer;
-  transition: opacity 200ms ease-out;
+  -webkit-transition: opacity 200ms ease-out;
+          transition: opacity 200ms ease-out;
 }
 a:active {
   opacity: 1;
@@ -1414,7 +1421,9 @@ a:active {
 .loader,
 .loader:after,
 .loader-small {
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
   width: 10em;
   height: 10em;
 }
@@ -1431,11 +1440,13 @@ a:active {
 @keyframes loader {
   0% {
     -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+         transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+         transform: rotate(360deg);
   }
 }
 .loader-small {
@@ -1476,9 +1487,12 @@ section:after {
 }
 .home-bg {
   background: url('../img/bg.png') no-repeat;
-  background-size: cover;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+          background-size: cover;
   color: white;
-  transition: all 200ms ease-out;
+  -webkit-transition: all 200ms ease-out;
+          transition: all 200ms ease-out;
 }
 .dash-bg {
   background-color: #164966;
@@ -1496,7 +1510,8 @@ section:after {
 .animate-show-top,
 .animate-show-left,
 .animate-show-right {
-  transition: all 200ms ease-out;
+  -webkit-transition: all 200ms ease-out;
+          transition: all 200ms ease-out;
   opacity: 1;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   filter: alpha(opacity=100);
@@ -1516,7 +1531,8 @@ section:after {
   opacity: 0;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   filter: alpha(opacity=0);
-  transition-duration: 50ms;
+  -webkit-transition-duration: 50ms;
+          transition-duration: 50ms;
 }
 .animate-show-top {
   top: 0;

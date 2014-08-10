@@ -2,11 +2,11 @@
 	<nav class="top-nav">
 		<a href="/"> <img src="img/logo.png" alt=""> </a>
 		<div class="pull-right">
-			<a href="/#/profile"><img src="{{myPicture}}" class="pull-right animate-show-right" ng-show="myPicture" style="width:32px" alt="Profile Picture"></a>
-			<a ng-show="isLoggedin"  ng-class="activePage == 'dashboard' ? 'active' : '' " class="pull-right btn btn-primary" href="/#/dashboard">Dasboard</a>
-			<a ng-show="isLoggedin"  ng-class="activePage == 'books' ? 'active' : '' " class="pull-right btn btn-primary" href="/#/books">Books</a>
-			<a ng-show="isLoggedin"   ng-click="logout()" class="pull-right btn btn-primary" href>Log out</a>
-			<a ng-show="!isLoggedin"  ng-click="loginWithFB()" class="pull-right btn btn-primary" href>Log in with Facebook</a>
+			<a href="/#/profile"><img style="border-radius:50%" src="{{myPicture}}" class="pull-right animate-show-right" ng-show="myPicture" style="width:32px" alt="Profile Picture"></a>
+			<a ng-show="isLoggedin"  ng-class="activePage == 'dashboard' ? 'active' : '' " href="/#/dashboard">Library<span class="glyphicon-library"></span></a>
+			<a ng-show="isLoggedin"  ng-class="activePage == 'books' ? 'active' : '' " href="/#/books">Books<span class="glyphicon-books"></span></a>
+			<a ng-show="isLoggedin"   ng-click="logout()" href>Logout<span class="glyphicon-power-clean"></span></a>
+			<a ng-show="!isLoggedin"  ng-click="loginWithFB()" class="pull-right btn btn-primary" href>Log in <span class="glyphicon-facebook"></span></a>
 		</div>
 	</nav>
 </div>
