@@ -46,10 +46,9 @@ angular.module('MainModule', ['MainApp'])
   // $scope.isAppLoaded = true;
   //
   $scope.$routeParams = $routeParams;
-
-  // get the profile info
   Auth.runQuery("/me", function(res){ $scope.firstName  = res.first_name });
 
+  // get the profile info
   // checking if the Facebook wrapper is ready.
   // The facebook api is instantially asynchronously, because of that, we need to watch 
   // for the ready event. When the API is ready, then the `FB` global object is ready to go !
@@ -132,10 +131,6 @@ angular.module('MainModule', ['MainApp'])
       })
     });
   });
-
-
-
-  
   
   // ajax call to get my facebook photo.
   $scope.getPhoto = function() {
@@ -163,7 +158,9 @@ angular.module('MainModule', ['MainApp'])
         Auth.setUser(true);
         // ask the state of the user from Auth.
         $scope.isLoggedin = Auth.isLoggedIn();
-        Auth.setLoginPic(function(pic) {$scope.myPicture = pic})
+        Auth.setLoginPic(function(pic) {$scope.myPicture = pic; });
+        Auth.runQuery("/me", function(res){ $scope.firstName  = res.first_name });
+
         // redirect to dashboard on login.
         $location.url("/library")
       } else {
