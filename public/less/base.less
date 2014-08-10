@@ -16,6 +16,9 @@ h1, h2, h3, h4, h5 {
   -webkit-margin-end: 0;
 }
 
+// better Bicubic Scaling: for ie6-7
+img { -ms-interpolation-mode: bicubic; }
+
 //mixins
 // hover states
 #hover{
@@ -41,5 +44,21 @@ a {
 a.inverted {
   color : @mywhite;
 }
+
+// a's list
+.inverted-list {
+  a {
+    color: @mywhite;
+  }
+}
+
+.light-list {
+  a {
+    color : @color3;
+  }
+}
+
+
+
 
 // 

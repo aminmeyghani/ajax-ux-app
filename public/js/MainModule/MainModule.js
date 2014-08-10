@@ -12,10 +12,10 @@ angular.module('MainModule', ['MainApp'])
     getMy: function (attr) {return my[attr]},
     getMe: function () {return my },
     // wrapper for calling api queries.
-    runQuery: function (what, callback) {
+    runQuery: function (what, callback, options) {
       Facebook.getLoginStatus(function(response){
         if (response.status === 'connected') {
-          Facebook.api(what, function (r){ callback(qdata = r)});
+          Facebook.api(what, options, function (r){ callback(qdata = r)});
         } else if (response.status === 'not_authorized') {
           console.log("Please confirm the app so that you can connect to it")
         } else {
@@ -23,6 +23,7 @@ angular.module('MainModule', ['MainApp'])
         }
       })
     },
+
     // Ajax in logged in user picture from the facebook account.
     setLoginPic: function (callback) {
       var thiz = this;
@@ -102,19 +103,27 @@ angular.module('MainModule', ['MainApp'])
       Auth.runQuery("/"+f.id+"/books", function(books){ 
         books.data.forEach(function (b) {
           Auth.runQuery("/"+b.id, function(page){ 
-            rawFriendsData.push({
-              book: b,
-              friend: f,
-              bookPage: page
-            });
-            var mydata = _.groupBy(rawFriendsData, function (x) {return x.friend.id} );
-            $scope.mainData = [];
-            // organize data for display.
-            for (var v in mydata) {
-              $scope.mainData.push(
-                { friend: mydata[v][0].friend, books: mydata[v].map(function (y) {return y.book} ) }
-              );
-            }
+            Auth.runQuery("/"+f.id+"/picture", function (friendPicture) {
+              rawFriendsData.push({
+                book: {data: b, bookPage: page},
+                friend: {data:f, picURL: friendPicture.data.url},
+              });
+              var mydata = _.groupBy(rawFriendsData, function (x) {return x.friend.data.id} );
+              $scope.mainData = [];
+              // organize data for display. returns -> 
+              /*
+                [
+                  { friend: FRIEND_OBJ, books: [ BOOK_OBJ, BOOK_OBJ, BOOK_OBJ] }, 
+                  { ... },
+                  { ... }
+                ]
+              */
+              for (var v in mydata) {
+                $scope.mainData.push(
+                  { friend: mydata[v][0].friend, books: mydata[v].map(function (y) {return y.book} ) }
+                );
+              }
+            }, {"redirect": false, "width": 500});
           })
         });
       })
@@ -199,4 +208,14 @@ angular.module('MainModule', ['MainApp'])
 
 .directive('tip', function() { return function(scope, element, attrs) {
   $(element).tooltip({placement: attrs.placement,title:function(){return $(element).attr('tip')}});
+}})
+
+// resize and corp image.
+.directive('resize', function() { return function(scope, element, attrs) {
+  // $(element).tooltip({placement: attrs.placement,title:function(){return $(element).attr('tip')}});
+  $(element).resizecrop({
+    width:attrs.w,
+    height:attrs.h,
+    vertical:attrs.vertical || "vertical"
+  });  
 }})
