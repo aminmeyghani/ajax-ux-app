@@ -1,10 +1,11 @@
 angular.module('MainModule', ['MainApp'])
 
-// service to keep track of the state of the user.
+// services
+// ----------------
+// service for queries and user state.
 .service('Auth', function(Facebook){
   var user;
   var my = {};
-  var activePage;
   return{
     setUser : function(aUser) {user = aUser;},
     isLoggedIn : function(){return(user)? user : false;},
@@ -23,7 +24,6 @@ angular.module('MainModule', ['MainApp'])
         }
       })
     },
-
     // Ajax in logged in user picture from the facebook account.
     setLoginPic: function (callback) {
       var thiz = this;
@@ -34,20 +34,24 @@ angular.module('MainModule', ['MainApp'])
       })
     },
     // set the current path (the active page)
-    setActivePage: function (p) { activePage = p},
-    // get the current path (the active page)
-    getActivePage: function () { return activePage },
+    getActivePage: function (location) { return location.url().substring(1, location.url().length)},
   }
 })
 
+// controllers
+// -------------
 // Main controller controlling the whole app. The highest level controller.
 .controller("MainCtrl", [ "$scope", "$http", "Facebook", "Auth", "$rootScope", "$location", "$timeout","$route", "$routeParams", function ($scope, $http, Facebook, Auth, $rootScope, $location, $timeout, $routeParams) {
+  $scope.toggle = false;
+  $scope.toggleSidebar = function() {
+    $scope.toggle = ! $scope.toggle;
+  };
+
+  
   // for offline testing.
   // $scope.isAppLoaded = true;
   //
   $scope.$routeParams = $routeParams;
-  Auth.runQuery("/me", function(res){ $scope.firstName  = res.first_name });
-
   // get the profile info
   // checking if the Facebook wrapper is ready.
   // The facebook api is instantially asynchronously, because of that, we need to watch 
@@ -78,14 +82,13 @@ angular.module('MainModule', ['MainApp'])
     $rootScope.$on('$routeChangeStart', function () {
       $scope.isHome = ($location.url() == "/") ? (true) : (false);  
     });
-
     // checking on routeprams
     $scope.$on('$routeChangeSuccess', function() {
-      // Auth.setActivePage( $location.url() );
-      $scope.activePage = $location.url().substring(1, $location.url().length);
+      // set the active page.
+      $scope.activePage = Auth.getActivePage($location);
+      // get the name of the logged in user.
+      Auth.runQuery("/me", function(res){ $scope.firstName  = res.first_name });
     });
-    
-  
 }])
 // Higher level controller for the dashboard.
 .controller("LibraryCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", "$timeout", function ($rootScope, $scope, $http, $q, Facebook, Auth, $timeout) {
@@ -159,7 +162,7 @@ angular.module('MainModule', ['MainApp'])
         // ask the state of the user from Auth.
         $scope.isLoggedin = Auth.isLoggedIn();
         Auth.setLoginPic(function(pic) {$scope.myPicture = pic; });
-        Auth.runQuery("/me", function(res){ $scope.firstName  = res.first_name });
+
 
         // redirect to dashboard on login.
         $location.url("/library")
@@ -173,6 +176,7 @@ angular.module('MainModule', ['MainApp'])
   };
   // logout the user from the app (and facebook)
   $scope.logout = function () {
+    console.log("logiing out", FB.getAccessToken());
     Facebook.logout(function(response) {
       console.log("logged out");
       Auth.setUser(false);
@@ -197,6 +201,8 @@ angular.module('MainModule', ['MainApp'])
     ]).then(function(response) {$scope.books = response[0].data; $timeout(function () {$scope.isBooksReady = true},500)});
 }])
 
+// Directives
+// -------------
 .directive('icon', [ function () {
     return {
     scope:{glyph: "@icon"}, 
@@ -212,7 +218,6 @@ angular.module('MainModule', ['MainApp'])
 
 // resize and corp image.
 .directive('resize', function() { return function(scope, element, attrs) {
-  // $(element).tooltip({placement: attrs.placement,title:function(){return $(element).attr('tip')}});
   $(element).resizecrop({
     width:attrs.w,
     height:attrs.h,
