@@ -1350,12 +1350,18 @@ a:active {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   filter: alpha(opacity=100);
 }
+a.inverted {
+  color: #ffffff;
+}
 /*
  ## table maker.
  ## make-table(@td-width ; @td-paddings)
 
  @td-width: to set the td to browser default value assign in it to `ingerit`.
 */
+.inverted-list a {
+  color: #ffffff;
+}
 .btn-outline {
   background: transparent;
   color: #ffffff;
@@ -1492,6 +1498,38 @@ section:after {
   padding: 10px;
   padding-bottom: 20px;
   margin-top: 40px;
+}
+.top-nav-app {
+  background-color: #000000;
+  height: 50px;
+}
+blockquote {
+  margin: 0;
+  padding: 10px;
+  border-left: 1px solid #0094ff;
+  border-right: 1px solid #0094ff;
+  background-color: #eee;
+  line-height: 1.5em;
+  color: #0082e0;
+}
+blockquote[min-height~="75px"] {
+  padding: 1em 3em;
+  border-left: 0;
+  border-right: 0;
+  border-top: 5px solid #74bd0a;
+  border-bottom: 5px solid #74bd0a;
+  color: #619b0d;
+}
+h1 {
+  font-size: 1.25em;
+}
+p {
+  margin: 0 0 1em;
+}
+code {
+  padding: 0.25em 0.5em;
+  color: #000;
+  background-color: #f9f9f9;
 }
 .animate-show-top,
 .animate-show-left,

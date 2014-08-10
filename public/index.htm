@@ -22,20 +22,21 @@
   <script src="js/MainModule/MainModule.js"></script>
   <script src="js/Main.js"></script>
   <script src="js/manual-bootstrap.js"></script>
+  <script src="lib/element-query/elementQuery.min.js"></script>
 </head>
 
 <body ng-controller="MainCtrl">
   <div ng-class="isHome ? 'home-bg' : 'dash-bg' " style="height:100vh" class="main">
-    <div class="container" ng-controller="LoginCtrl">
+    <div ng-controller="LoginCtrl">
       <div ng-view></div>
     </div>
-    <div class="container">
-      <div class="text-center" style="margin-top:26%">
+    <!-- <div class="container">
+      <div class="text-center" style="margin-top:26%"> -->
         <!-- <img src="img/loading.gif" alt=""> -->
         <!-- <p>Loading ...</p>
 			<p class="loader" style="margin:-7em auto"></p> -->
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
   </div>
 </body>
 

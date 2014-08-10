@@ -1,6 +1,14 @@
 <div ng-controller="DashboardCtrl">
   <div ng-include="'topnav.htm'"></div>
   <div class="container">
+    <section>
+      <div class="col-sm-12">
+        <div class="container">
+            <blockquote>Element queries allow for new possibilities, such as change in appearance as an element's height changes.</blockquote>
+        </div>
+      </div>
+    </section>
+
     <div class="row">
       <div class="col-sm-6">
         <h1>List of your friends </h1>
@@ -17,12 +25,18 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <h2>list of their books</h2>
+        <h2>See what books your friend likes</h2>
         <p class="loader loader-small" ng-show="!friendsBooks.length"></p>
         <div ng-show="friendsBooks.length" class="animate-show-left">
-          <ul>
-            <li ng-repeat="fb in friendsBooks">{{fb.friend.name}} : {{fb.book.name}} : <img ng-src="{{fb.bookPage.cover.source}}" style="width:50px" alt=""> : <a href="{{fb.bookPage.link}}">Book</a></li>
-          </ul>
+          <table>
+            <tbody>
+              <tr ng-repeat="fb in friendsBooks">
+                <td>{{fb.friend.name}}</td>
+                <td>{{fb.book.name}}</td>
+                <td> <a href="{{fb.bookPage.link}}"><img ng-src="{{fb.bookPage.cover.source}}" style="width:50px" alt=""></a> </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
