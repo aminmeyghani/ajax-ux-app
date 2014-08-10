@@ -1,88 +1,56 @@
+<style>
+.inner {
+  background-color: #36587A;
+  border: 1px solid #1E4D7F;
+}
+</style>
 <div ng-controller="LibraryCtrl">
   <div ng-include="'topnav.htm'"></div>
   <div class="container">
-      <!-- <div class="col-sm-12">
-        <h1>List of your friends </h1>
-        
-        <div>
-          <p class="loader-small" ng-show="!!!myFriends"></p>
-          <div class="animate-show-left" ng-show="!!myFriends">
-          <ul>
-            <li ng-repeat="f in myFriends">
-              {{f.name}}
-            </li>
-          </ul>    
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="loader-small" ng-show="!isBooksReady"></div>
+        <div ng-show="isBooksReady" class="animate-show-left">
+          <div style="
+          margin-top: 15px;
+          padding: 15px;
+          background: #2E4E6F;
+          border-radius: 4px;
+          border: 1px solid #0F425F;
+          ">
+            <table class="mytable">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Name</th>
+                  <th>Author</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="b in books">
+                  <td>{{b.id}}</td>
+                  <td>{{b.name}}</td>
+                  <td>{{b.author}}</td>
+                </tr>
+              </tbody>
+            </table>        
           </div>
         </div>
-      </div> -->
-      
-        <h2>See what books your friend likes</h2>
-        <p class="loader loader-small" ng-show="!mainData.length"></p>
-        <div ng-show="mainData.length" class="animate-show-left">
-          <ul class="no-bullets light-list">
-            <li ng-repeat="d in mainData">
-              <ul style="padding-left:20px;">
-                
-                  <li ng-repeat="b in d.books">
-                    <!-- <div class="row" ng-if="$index === 0"> -->
-                    <!-- <h2>index: {{$index}}</h2> -->
-                    <div ng-if="$index === 0" class="clearfix"></div>
-                    <style>
-                    .my-col {
-                      float:left;
-                      width:321;
-                    }
-                    .inner-book {
-                      border: 1px solid #e5e6e7;
-                      height: 256px;
-                      padding: 5px;
-                      margin: 4px;
-                    }
-                    .book-title {
-                      background-color: #000;
-                      padding: 8px;
-                      height: 37px;
-                      font-weight: 500;
-                    }
-                    .book-friend {
-                      padding: 2px;
-                      background: #000;
-                    }
-                    </style>
-                      <div class="my-col">
-                        <div class="inner-book">
-                          <div class="book-title">
-                            <div>
-                              <a href="{{b.bookPage.link}}">{{b.data.name}}</a>
-                            </div>
-                          </div>
-                          <div>
-                            <div>
-                              <img  src="{{b.bookPage.cover.source}}" resize w="300" h="170" alt="">
-                            </div>
-                          </div>
-                          <div class="fix-float book-friend">
-                            <div class="pull-left"><img style="width:35px" src="{{d.friend.picURL}}" alt=""> </div><div style="padding: 5px 0 0 5px" class="pull-left">{{d.friend.data.name}} </div> 
-                          </div>
-                        </div>
-                      </div>
-                      <div ng-if="$index === 1" class="clearfix"></div>
-                    <!-- </div class="row" ng-if="$index === 3"> -->
-                  </li>
-                
-              </ul>
-            </li>
-          </ul>
-          <!-- <table class="mytable">
-            <tbody>
-              <tr ng-repeat="fb in mainData">
-                <td>{{fb.friend.name}}</td>
-                <td>{{fb.book.name}}</td>
-                <td> <a href="{{fb.bookPage.link}}"><img ng-src="{{fb.bookPage.cover.source}}" style="width:50px" alt=""></a> </td>
-              </tr>
-            </tbody>
-          </table> -->
-          
-        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="row" style="margin-top:15px">
+          <div class="col-sm-6">
+            <div class="inner">
+              <h2>Test</h2>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="inner">
+              <h2>Test</h2>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
   </div>
 </div>

@@ -1,10 +1,16 @@
 <div ng-controller="ProfileCtrl">
 	<div ng-include="'topnav.htm'"></div>
 	<div class="container">
-		<p class="loader loader-small" ng-show="!!!me"></p>
-		<div ng-show="!!me" class="animate-show-left text-ccenter">
-			coming soon ...
+		<div ng-show="!!!me">
+			<div style="width: 10px;margin: 0 auto;margin-top: 20%;">
+			<p class="loader loader-small" ></p>
 		</div>
+		<p style="margin: 0 auto;width: 31px;margin-top: 10px;">loading</p>
+	</div>
+
+	<div ng-show="!!me" class="animate-show-left text-ccenter" style="text-align: center;padding: 20%;">
+		coming soon ...
+	</div>
 		<!-- <ul ng-show="!!me" class="animate-show-left">
 			<li ng-repeat="(k,v) in me">
 				{{k}}: {{v}}

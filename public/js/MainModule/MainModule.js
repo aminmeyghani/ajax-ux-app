@@ -89,8 +89,11 @@ angular.module('MainModule', ['MainApp'])
   
 }])
 // Higher level controller for the dashboard.
-.controller("LibraryCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", function ($rootScope, $scope, $http, $q, Facebook, Auth) {
-  // catching routeparams
+.controller("LibraryCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", "$timeout", function ($rootScope, $scope, $http, $q, Facebook, Auth, $timeout) {
+  // getting the books
+  $scope.isBooksReady = false;
+  $q.all([$http({method: "GET",url: "/books"})
+  ]).then(function(response) {$scope.books = response[0].data; $timeout(function () {$scope.isBooksReady = true},500)});
     
   // get list of my facebook friends.
   Auth.runQuery("/me", function(d){ $scope.me = d});
