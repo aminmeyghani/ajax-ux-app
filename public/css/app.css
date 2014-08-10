@@ -169,6 +169,31 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.fade {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+.collapse {
+  display: none;
+}
+.collapse.in {
+  display: block;
+}
+tr.collapse.in {
+  display: table-row;
+}
+tbody.collapse.in {
+  display: table-row-group;
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
 *,
 *:before,
 *:after {
@@ -851,6 +876,106 @@ table {
     margin-left: 0%;
   }
 }
+.tooltip {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  visibility: visible;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  filter: alpha(opacity=0);
+}
+.tooltip.in {
+  opacity: 0.9;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  filter: alpha(opacity=90);
+}
+.tooltip.top {
+  margin-top: -3px;
+  padding: 5px 0;
+}
+.tooltip.right {
+  margin-left: 3px;
+  padding: 0 5px;
+}
+.tooltip.bottom {
+  margin-top: 3px;
+  padding: 5px 0;
+}
+.tooltip.left {
+  margin-left: -3px;
+  padding: 0 5px;
+}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #000000;
+  border-radius: 4px;
+}
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000000;
+}
+.tooltip.top-left .tooltip-arrow {
+  bottom: 0;
+  left: 5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000000;
+}
+.tooltip.top-right .tooltip-arrow {
+  bottom: 0;
+  right: 5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000000;
+}
+.tooltip.right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-width: 5px 5px 5px 0;
+  border-right-color: #000000;
+}
+.tooltip.left .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #000000;
+}
+.tooltip.bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000000;
+}
+.tooltip.bottom-left .tooltip-arrow {
+  top: 0;
+  left: 5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000000;
+}
+.tooltip.bottom-right .tooltip-arrow {
+  top: 0;
+  right: 5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000000;
+}
 /*
 # helpers #
 */
@@ -902,6 +1027,21 @@ The default value is `linear`.
 }
 .text-center {
   text-align: center;
+}
+.fs-1 {
+  font-size: 11px;
+}
+.fs-2 {
+  font-size: 14px;
+}
+.fs-3 {
+  font-size: 17px;
+}
+.fs-4 {
+  font-size: 20px;
+}
+.fs-5 {
+  font-size: 23px;
 }
 /*
   # Mixin Interfaces #
@@ -1279,17 +1419,18 @@ You can target the `width` property for example: `.make-fibo-for(@property : wid
   font-style: normal;
 }
 .glyphicon,
+.glyphicon-user,
 .glyphicon-address-book,
 .glyphicon-lock,
-.glyphicon-power-clean,
 .glyphicon-power,
 .glyphicon-facebook,
-.glyphicon-user,
 .glyphicon-book,
-.glyphicon-library,
-.glyphicon-friends,
 .glyphicon-books2,
-.glyphicon-books {
+.glyphicon-home,
+.glyphicon-library,
+.glyphicon-books,
+.glyphicon-friends,
+.glyphicon-power-clean {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -1300,41 +1441,63 @@ You can target the `width` property for example: `.make-fibo-for(@property : wid
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.glyphicon-user:before {
+  content: "\e000";
+}
 .glyphicon-address-book:before {
-  content: "\e00a";
+  content: "\e00b";
 }
 .glyphicon-lock:before {
   content: "\e003";
-}
-.glyphicon-power-clean:before {
-  content: "\e002";
 }
 .glyphicon-power:before {
   content: "\e001";
 }
 .glyphicon-facebook:before {
-  content: "\e006";
-}
-.glyphicon-user:before {
-  content: "\e000";
+  content: "\e007";
 }
 .glyphicon-book:before {
-  content: "\e009";
+  content: "\e00a";
+}
+.glyphicon-books2:before {
+  content: "\e008";
+}
+.glyphicon-home:before {
+  content: "\e005";
 }
 .glyphicon-library:before {
   content: "\e004";
 }
-.glyphicon-friends:before {
-  content: "\e005";
-}
-.glyphicon-books2:before {
-  content: "\e007";
-}
 .glyphicon-books:before {
-  content: "\e008";
+  content: "\e009";
+}
+.glyphicon-friends:before {
+  content: "\e006";
+}
+.glyphicon-power-clean:before {
+  content: "\e002";
+}
+ul {
+  display: block;
+  list-style-type: disc;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
 }
 a {
-  color: #2885ba;
+  color: #164966;
   text-decoration: none;
   transition: opacity 200ms ease-out;
 }
@@ -1451,6 +1614,41 @@ a.inverted {
   -webkit-animation: loader 0.5s infinite linear;
   animation: loader 0.5s infinite linear;
 }
+.listz li {
+  display: inline;
+  list-style: none;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.listz li:first-child {
+  padding-left: 0;
+}
+.listz li:last-child {
+  padding-right: 0;
+}
+.ricon {
+  padding-left: 5px;
+}
+.licon {
+  padding-right: 5px;
+}
+blockquote {
+  margin: 0;
+  padding: 10px;
+  border-left: 1px solid #0094ff;
+  border-right: 1px solid #0094ff;
+  background-color: #eee;
+  line-height: 1.5em;
+  color: #0082e0;
+}
+blockquote[min-height~="68px"] {
+  padding: 1em 3em;
+  border-left: 0;
+  border-right: 0;
+  border-top: 5px solid #74bd0a;
+  border-bottom: 5px solid #74bd0a;
+  color: #619b0d;
+}
 body {
   font-family: 'Dosis', sans-serif;
 }
@@ -1500,36 +1698,23 @@ section:after {
   margin-top: 40px;
 }
 .top-nav-app {
-  background-color: #000000;
-  height: 50px;
+  background-color: #113a51;
+  height: 60px;
+  padding-top: 12px;
 }
-blockquote {
-  margin: 0;
-  padding: 10px;
-  border-left: 1px solid #0094ff;
-  border-right: 1px solid #0094ff;
-  background-color: #eee;
-  line-height: 1.5em;
-  color: #0082e0;
+.active-nav {
+  color: #2885ba;
 }
-blockquote[min-height~="75px"] {
-  padding: 1em 3em;
-  border-left: 0;
-  border-right: 0;
-  border-top: 5px solid #74bd0a;
-  border-bottom: 5px solid #74bd0a;
-  color: #619b0d;
+.profile-picture,
+.profile-picture-small,
+.profile-picture-large {
+  border-radius: 50%;
 }
-h1 {
-  font-size: 1.25em;
+.profile-picture-small {
+  width: 30px;
 }
-p {
-  margin: 0 0 1em;
-}
-code {
-  padding: 0.25em 0.5em;
-  color: #000;
-  background-color: #f9f9f9;
+.profile-picture-large {
+  width: 60px;
 }
 .animate-show-top,
 .animate-show-left,

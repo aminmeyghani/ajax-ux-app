@@ -30,7 +30,7 @@ angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource',
 .config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
    $routeProvider
 	.when('/', { templateUrl:function (params) {return "home.htm"} })
-	.when('/dashboard', { templateUrl:function (params) { return "dashboard.htm"} })
+	.when('/library', { templateUrl:function (params) { return "library.htm"} })
 	.when('/profile', { templateUrl:function (params) {return "profile.htm"} })
   .when('/books', { templateUrl:function (params) {return "books.htm"} })
 	.when('/404', { templateUrl:"404.htm" })

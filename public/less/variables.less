@@ -1,8 +1,17 @@
 // color schemes.
-@color1 : #164966;
-@color2 : lighten(@color1, 20%);
+@seed: #164966;
+@color1 : darken(@seed, 5%);
+@color2 : @seed;
+@color3 : lighten(@seed, 20%);
 @mywhite  : #fff;
 @myblack  : #000;
+
+// fonts sizes
+@fs-1: 11px;
+@fs-2: 14px;
+@fs-3: 17px;
+@fs-4: 20px;
+@fs-5: 23px;
 
 // hover states
 @hover-opacity  : 0.8;

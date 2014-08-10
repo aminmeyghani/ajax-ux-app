@@ -8,11 +8,18 @@
 </div>
 
 <nav class="top-nav-app" ng-show="isLoggedin">
-	<a href="/"> <img src="img/logo.png" alt=""> </a>
-	<div class="pull-right inverted-list">
-		<a href="/#/profile"><img style="border-radius:50%" src="{{myPicture}}" class="pull-right animate-show-right" ng-show="myPicture" style="width:32px" alt="Profile Picture"></a>
-		<a ng-class="activePage == 'dashboard' ? 'active' : '' " href="/#/dashboard">Library<span class="glyphicon-library"></span></a>
-		<a ng-class="activePage == 'books' ? 'active' : '' " href="/#/books">Books<span class="glyphicon-books"></span></a>
-		<a ng-click="logout()" href>Logout<span class="glyphicon-power-clean"></span></a>
+	<div class="container">
+		<!-- <a href="/"> <img src="img/logo.png" alt=""> </a> -->
+		<div class="pull-left">
+			<a href="/#/profile"><img src="{{myPicture}}" class="animate-show-left profile-picture-small" ng-show="myPicture" alt="Profile Picture"></a>
+		</div>
+		<div class="pull-right inverted-list">
+			<ul class="listz fs-5">
+				<li><a tip="Library" placement="bottom" href="/#/library"><span ng-class="activePage == 'library' ? 'active-nav' : '' "  icon="library" class="ricon"></span></a></li>
+				<li><a tip="Books" placement="bottom"  href="/#/books"><span ng-class="activePage == 'books' ? 'active-nav' : '' " icon="books" class="ricon"></span></a></li>
+				<li><a tip="Home" placement="bottom" href="/"><span ng-class="activePage == '' ? 'active-nav' : '' " icon="home" class="ricon"></span></a></li>
+				<li><a tip="Logout" placement="bottom" ng-click="logout()" href><span icon="power-clean" class="ricon"></span></a></li>
+			</ul>
+		</div>
 	</div>
 </nav>

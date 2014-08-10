@@ -85,7 +85,7 @@ angular.module('MainModule', ['MainApp'])
   
 }])
 // Higher level controller for the dashboard.
-.controller("DashboardCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", function ($rootScope, $scope, $http, $q, Facebook, Auth) {
+.controller("LibraryCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", function ($rootScope, $scope, $http, $q, Facebook, Auth) {
   // catching routeparams
     
   // get list of my facebook friends.
@@ -140,7 +140,7 @@ angular.module('MainModule', ['MainApp'])
         $scope.isLoggedin = Auth.isLoggedIn();
         Auth.setLoginPic(function(pic) {$scope.myPicture = pic})
         // redirect to dashboard on login.
-        $location.url("/dashboard")
+        $location.url("/library")
       } else {
         // log in wasn't successful ...
         Auth.setUser(false);
@@ -174,3 +174,16 @@ angular.module('MainModule', ['MainApp'])
     $q.all([$http({method: "GET",url: "/books"})
     ]).then(function(response) {$scope.books = response[0].data; $timeout(function () {$scope.isBooksReady = true},500)});
 }])
+
+.directive('icon', [ function () {
+    return {
+    scope:{glyph: "@icon"}, 
+    restrict: "A",
+    template : "<span class='glyphicon-{{glyph}}'></span>",
+    link:function(scope, element, attrs) {}
+  };
+}])
+
+.directive('tip', function() { return function(scope, element, attrs) {
+  $(element).tooltip({placement: attrs.placement,title:function(){return $(element).attr('tip')}});
+}})

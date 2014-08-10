@@ -8,17 +8,18 @@
   font-style: normal;
 }
 .glyphicon,
+.glyphicon-user,
 .glyphicon-address-book,
 .glyphicon-lock,
-.glyphicon-power-clean,
 .glyphicon-power,
 .glyphicon-facebook,
-.glyphicon-user,
 .glyphicon-book,
-.glyphicon-library,
-.glyphicon-friends,
 .glyphicon-books2,
-.glyphicon-books {
+.glyphicon-home,
+.glyphicon-library,
+.glyphicon-books,
+.glyphicon-friends,
+.glyphicon-power-clean {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -29,36 +30,39 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.glyphicon-user:before {
+  content: "\e000";
+}
 .glyphicon-address-book:before {
-  content: "\e00a";
+  content: "\e00b";
 }
 .glyphicon-lock:before {
   content: "\e003";
-}
-.glyphicon-power-clean:before {
-  content: "\e002";
 }
 .glyphicon-power:before {
   content: "\e001";
 }
 .glyphicon-facebook:before {
-  content: "\e006";
-}
-.glyphicon-user:before {
-  content: "\e000";
+  content: "\e007";
 }
 .glyphicon-book:before {
-  content: "\e009";
+  content: "\e00a";
+}
+.glyphicon-books2:before {
+  content: "\e008";
+}
+.glyphicon-home:before {
+  content: "\e005";
 }
 .glyphicon-library:before {
   content: "\e004";
 }
-.glyphicon-friends:before {
-  content: "\e005";
-}
-.glyphicon-books2:before {
-  content: "\e007";
-}
 .glyphicon-books:before {
-  content: "\e008";
+  content: "\e009";
+}
+.glyphicon-friends:before {
+  content: "\e006";
+}
+.glyphicon-power-clean:before {
+  content: "\e002";
 }

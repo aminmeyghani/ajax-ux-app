@@ -6,7 +6,7 @@
 
  @td-width: to set the td to browser default value assign in it to `ingerit`.
 */
-.make-table (@td-width: 100% ; @td-padding: "3px 10px" ) {
+.make-table (@td-width: 100% ; @td-padding: "3px 10px" ; @thead-color : @color3 ) {
 	width: 100%;
 	border-collapse: collapse;
 	td, th {
@@ -14,12 +14,19 @@
     padding: ~"@{td-padding}";
 	}
 	thead {
-		background-color: @color2;
+		background-color: @thead-color;
 	}
   td {
     width: @td-width;
   }
 }
+
+// list maker
+// .make-list (@is-styled: bullet) {
+// 	li {
+// 		list-style: circle;
+// 	}
+// }
 
 // implementations
 // -----------------
@@ -113,4 +120,43 @@
 	margin:0;
 	-webkit-animation: loader 0.5s infinite linear;
 	animation: loader 0.5s infinite linear;
+}
+// list;
+.listz {
+	li {
+		display: inline;
+		list-style: none;
+		padding-right: 10px;
+		padding-left: 10px;
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}
+// glyphs
+.ricon { padding-left: 5px }
+.licon { padding-right: 5px }
+// 
+// element query test
+blockquote {
+	margin: 0;
+	padding: 10px;
+	border-left: 1px solid #0094ff;
+	border-right: 1px solid #0094ff;
+	background-color: #eee;
+	line-height: 1.5em;
+	color: #0082e0;
+}
+
+
+blockquote[min-height~="68px"] {
+	padding: 1em 3em;
+	border-left: 0;
+	border-right: 0;
+	border-top: 5px solid #74bd0a;
+	border-bottom: 5px solid #74bd0a;
+	color: #619b0d;
 }
