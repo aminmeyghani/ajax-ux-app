@@ -1614,17 +1614,24 @@ a.inverted {
   -webkit-animation: loader 0.5s infinite linear;
   animation: loader 0.5s infinite linear;
 }
-.listz li {
+.listz li,
+.listz-loose li {
   display: inline;
   list-style: none;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 7px;
+  padding-left: 7px;
 }
-.listz li:first-child {
+.listz li:first-child,
+.listz-loose li:first-child {
   padding-left: 0;
 }
-.listz li:last-child {
+.listz li:last-child,
+.listz-loose li:last-child {
   padding-right: 0;
+}
+.listz-loose li {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .ricon {
   padding-left: 5px;

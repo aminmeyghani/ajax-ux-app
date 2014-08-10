@@ -21,6 +21,21 @@
   }
 }
 
+// make list
+.make-list(@padding: 10px) {
+	li {
+			display: inline;
+			list-style: none;
+			padding-right: @padding;
+			padding-left: @padding;
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}
 // list maker
 // .make-list (@is-styled: bullet) {
 // 	li {
@@ -122,19 +137,10 @@
 	animation: loader 0.5s infinite linear;
 }
 // list;
-.listz {
-	li {
-		display: inline;
-		list-style: none;
-		padding-right: 10px;
-		padding-left: 10px;
-		&:first-child {
-			padding-left: 0;
-		}
-		&:last-child {
-			padding-right: 0;
-		}
-	}
+.listz, .listz-loose {.make-list(@padding:7px)}
+.listz-loose li {
+  padding-left: 15px;
+  padding-right : 15px;
 }
 // glyphs
 .ricon { padding-left: 5px }
