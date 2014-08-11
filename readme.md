@@ -1,8 +1,9 @@
 # Quisio
-An ajax app with angular.
+A basic facebook app with angular and bootstrap.
 
+0. Install nodejs.
 1. clone the repo
-2. go to the folder and do `npm install && grunt serve`
+2. go to the folder and do `npm install && npm install -g grunt-cli && grunt serve`. You may want to run them as `sudo` if there are permissions issues.
 3. Provide your own db settings in a file called `db.js` and put it in the `server` folder. Eventually the folder will 
 look like this:
 
@@ -33,6 +34,3 @@ This is the protocol of the `db.js` file:
 
 
 server will be running at port 8909: `http://localhost:8909`
-
-
-
