@@ -1,18 +1,33 @@
 {
     "chars": [
         {
-            "name": "glyphicon-home",
-            "value": "e006",
-            "fontFamily": "quisio"
-        },
-        {
-            "name": "glyphicon-library",
+            "name": "glyphicon-like-left",
             "value": "e005",
             "fontFamily": "quisio"
         },
         {
-            "name": "glyphicon-address-book",
-            "value": "e00c",
+            "name": "glyphicon-books2",
+            "value": "e00a",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-menu",
+            "value": "e003",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-power",
+            "value": "e001",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-library",
+            "value": "e006",
+            "fontFamily": "quisio"
+        },
+        {
+            "name": "glyphicon-home",
+            "value": "e007",
             "fontFamily": "quisio"
         },
         {
@@ -22,22 +37,7 @@
         },
         {
             "name": "glyphicon-facebook",
-            "value": "e008",
-            "fontFamily": "quisio"
-        },
-        {
-            "name": "glyphicon-book",
-            "value": "e00b",
-            "fontFamily": "quisio"
-        },
-        {
-            "name": "glyphicon-power",
-            "value": "e001",
-            "fontFamily": "quisio"
-        },
-        {
-            "name": "glyphicon-books",
-            "value": "e00a",
+            "value": "e009",
             "fontFamily": "quisio"
         },
         {
@@ -46,18 +46,23 @@
             "fontFamily": "quisio"
         },
         {
+            "name": "glyphicon-book",
+            "value": "e00c",
+            "fontFamily": "quisio"
+        },
+        {
             "name": "glyphicon-friends",
-            "value": "e007",
+            "value": "e008",
             "fontFamily": "quisio"
         },
         {
-            "name": "glyphicon-menu",
-            "value": "e003",
+            "name": "glyphicon-address-book",
+            "value": "e00d",
             "fontFamily": "quisio"
         },
         {
-            "name": "glyphicon-books2",
-            "value": "e009",
+            "name": "glyphicon-books",
+            "value": "e00b",
             "fontFamily": "quisio"
         },
         {

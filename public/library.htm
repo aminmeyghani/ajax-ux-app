@@ -13,19 +13,24 @@
           <div class="widget">
 
             <ol class="widget-list no-bullets" id="developers">
+              <li ng-hide="rawFriendsData.length">
+                <a href class="widget-list-link">
+                  
+                  <p class="text-center">loading ...</p>
+                </a>
+              </li>
               <li ng-repeat="d in rawFriendsData">
-                <a class="widget-list-link">
-                  <img src="{{d.friend.picURL}}" class="circle">
-                  {{d.book.data.name}} <span>481 followers</span>
+                <a href="{{d.book.bookPage.link}}" target="_blank" class="widget-list-link">
+                  <img ng-src="{{d.book.bookPage.cover.source}}" class="circle">
+                  {{d.book.data.name}} <span>Favorited by: {{d.friend.data.name}}</span>
                 </a>
               </li>
             </ol>
-
             <ul class="widget-tabs">
+              <i class="pull-right primary" icon="like-left"></i>
               <li class="widget-tab">
                 <a href class="widget-tab-link">Your Friend's Favorites</a>
                 <!-- Omitting the end tag is valid HTML and removes the space in-between inline blocks. -->
-              
             </ul>
           </div>
         </div>
