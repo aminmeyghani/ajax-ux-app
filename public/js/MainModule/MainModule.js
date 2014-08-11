@@ -205,9 +205,9 @@ angular.module('MainModule', ['MainApp'])
 // -------------
 .directive('icon', [ function () {
     return {
-    scope:{glyph: "@icon"}, 
+    scope:{glyph: "@icon", place: "@place"}, 
     restrict: "A",
-    template : "<span class='glyphicon-{{glyph}}'></span>",
+    template : "<span class='glyphicon-{{glyph}} {{place}}'></span>",
     link:function(scope, element, attrs) {}
   };
 }])

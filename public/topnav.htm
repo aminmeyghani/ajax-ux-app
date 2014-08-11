@@ -2,7 +2,7 @@
 	<div class="top-nav">
 		<a href="/"> <img src="img/logo.png" alt="logo"> </a>
 		<div class="pull-right inverted-list">
-			<a ng-click="loginWithFB()" class="pull-right btn btn-primary" href>Log in <span class="glyphicon-facebook"></span></a>
+			<a ng-click="loginWithFB()" class="pull-right btn btn-primary" href>Log in <i icon="facebook"></i></a>
 		</div>
 	</div>
 </div>
@@ -17,12 +17,11 @@
 			<a href="/#/library" class="pull-left"><img src="{{myPicture}}" class="animate-show-left profile-picture-small" ng-show="myPicture" alt="Profile Picture"></a>
 			<span class="pull-left" style="padding: 5px 0 0 10px">{{firstName}}</span>
 		</div>
-		<span class="inline-block" style="padding-top:4px">You have read: 540 pages ...</span>
+		<span class="inline-block" style="padding-top:4px"><i icon="book" place="licon"></i>You have read: 540 pages ...</span>
 		<div class="pull-right inverted-list">
 			<ul class="no-bullets fs-5">
-				<li><a tip="Logout" placement="bottom" ng-click="logout()" href><span icon="power-clean" class="ricon"></span></a></li>
+				<li><a tip="Logout" placement="bottom" ng-click="logout()" href><i icon="power-clean"></i></a></li>
 			</ul>
 		</div>
 	</div>
-	
 </div>
