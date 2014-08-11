@@ -8,10 +8,26 @@
   </div>
   <div>
     <div class="animate-show-left" ng-show="!!isBooksReady" style="padding:0 12px">
+      <div class="help animate-show-top" ng-show="isDismissed">
+        <i icon="help" class="primary" ng-click="showMsg()" tip="About Dashboard" placement="right"></i>
+      </div>
+      <div class="animate-show-top" ng-hide="isDismissed">
+        <div class="col-sxm-12">
+          <div>
+            <div class="notif notif-notice">
+              <h6 class="notif-title">Welcome to your dashboard!</h6>
+              <p>This is your dashboard where you can follow the number of pages that you read, see your Facebook friends favorite books and look for the newest books that are out there ! If you are ready, just use the search field below to look for your favorite books.</p>
+              <div class="notif-controls">
+                <a href ng-click="dismiss()" class="notif-close">Close</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
       <div class="row">
         <div class="col-sm-5">
           <div class="widget">
-
             <ol class="widget-list no-bullets" id="developers">
               <li ng-hide="rawFriendsData.length">
                 <a href class="widget-list-link">
@@ -30,6 +46,30 @@
               <i class="pull-right primary" icon="like-left"></i>
               <li class="widget-tab">
                 <a href class="widget-tab-link">Your Friend's Favorites</a>
+                <!-- Omitting the end tag is valid HTML and removes the space in-between inline blocks. -->
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="widget">
+            <ol class="widget-list no-bullets" id="developers">
+              <li ng-hide="rawFriendsData.length">
+                <a href class="widget-list-link">
+                  
+                  <p class="text-center">loading ...</p>
+                </a>
+              </li>
+              <li ng-repeat="d in rawFriendsData">
+                <a href="{{d.book.bookPage.link}}" target="_blank" class="widget-list-link">
+                  <img ng-src="{{d.book.bookPage.cover.source}}" class="circle">
+                  {{d.book.data.name}} <span>Favorited by: {{d.friend.data.name}}</span>
+                </a>
+              </li>
+            </ol>
+            <ul class="widget-tabs">
+              <i class="pull-right primary" icon="books"></i>
+              <li class="widget-tab">
+                <a href class="widget-tab-link">New Books</a>
                 <!-- Omitting the end tag is valid HTML and removes the space in-between inline blocks. -->
             </ul>
           </div>

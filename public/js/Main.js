@@ -1,4 +1,4 @@
-angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource', 'facebook','ngAnimate', 'angularSmoothscroll'])
+angular.module('MainApp', ['ui.bootstrap','MainModule', 'ngRoute', 'ngResource', 'facebook','ngAnimate', 'angularSmoothscroll', 'ngCookies'])
 
 // settings for the facebook api.
 .config(["FacebookProvider", function (FacebookProvider) {

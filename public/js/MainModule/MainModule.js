@@ -91,7 +91,29 @@ angular.module('MainModule', ['MainApp'])
     });
 }])
 // Higher level controller for the dashboard.
-.controller("LibraryCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", "$timeout", function ($rootScope, $scope, $http, $q, Facebook, Auth, $timeout) {
+.controller("LibraryCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", "$timeout", "$cookies", function ($rootScope, $scope, $http, $q, Facebook, Auth, $timeout, $cookies) {
+
+  // msg dismissed
+  $scope.isDismissed = false;
+  
+  $scope.$watch(function() { return $cookies.test;}, function(newValue) {
+       console.log('Cookie string: ' + $cookies.test)
+       $scope.isDismissed = $cookies.test;
+   });
+
+   
+
+   $scope.showMsg = function () {
+    $timeout(function () {
+        $cookies.test = '';
+    }, 500);
+   }
+
+   $scope.dismiss = function () {
+    $timeout(function () {
+        $cookies.test = 'third value';
+    }, 250);    
+   }
 
   // getting the books
   $scope.isBooksReady = false;
@@ -221,7 +243,8 @@ angular.module('MainModule', ['MainApp'])
     return {
     scope:{glyph: "@icon", place: "@place"}, 
     restrict: "A",
-    template : "<span class='glyphicon-{{glyph}} {{place}}'></span>",
+    transclude: true,
+    template : "<span class='glyphicon-{{glyph}} {{place}}' ng-transclude></span>",
     link:function(scope, element, attrs) {}
   };
 }])

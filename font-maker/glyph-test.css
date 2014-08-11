@@ -8,20 +8,21 @@
   font-style: normal;
 }
 .glyphicon,
-.glyphicon-like-left,
-.glyphicon-books2,
-.glyphicon-menu,
-.glyphicon-power,
 .glyphicon-library,
-.glyphicon-home,
-.glyphicon-user,
-.glyphicon-facebook,
-.glyphicon-lock,
-.glyphicon-book,
 .glyphicon-friends,
-.glyphicon-address-book,
+.glyphicon-user,
+.glyphicon-lock,
+.glyphicon-help,
 .glyphicon-books,
-.glyphicon-power-clean {
+.glyphicon-address-book,
+.glyphicon-book,
+.glyphicon-menu,
+.glyphicon-power-clean,
+.glyphicon-facebook,
+.glyphicon-like-left,
+.glyphicon-power,
+.glyphicon-home,
+.glyphicon-books2 {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -32,45 +33,48 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.glyphicon-like-left:before {
-  content: "\e005";
-}
-.glyphicon-books2:before {
-  content: "\e00a";
-}
-.glyphicon-menu:before {
-  content: "\e003";
-}
-.glyphicon-power:before {
-  content: "\e001";
-}
 .glyphicon-library:before {
   content: "\e006";
 }
-.glyphicon-home:before {
-  content: "\e007";
+.glyphicon-friends:before {
+  content: "\e009";
 }
 .glyphicon-user:before {
   content: "\e000";
 }
-.glyphicon-facebook:before {
-  content: "\e009";
-}
 .glyphicon-lock:before {
   content: "\e004";
 }
-.glyphicon-book:before {
-  content: "\e00c";
-}
-.glyphicon-friends:before {
+.glyphicon-help:before {
   content: "\e008";
 }
+.glyphicon-books:before {
+  content: "\e00c";
+}
 .glyphicon-address-book:before {
+  content: "\e00e";
+}
+.glyphicon-book:before {
   content: "\e00d";
 }
-.glyphicon-books:before {
-  content: "\e00b";
+.glyphicon-menu:before {
+  content: "\e003";
 }
 .glyphicon-power-clean:before {
   content: "\e002";
+}
+.glyphicon-facebook:before {
+  content: "\e00a";
+}
+.glyphicon-like-left:before {
+  content: "\e005";
+}
+.glyphicon-power:before {
+  content: "\e001";
+}
+.glyphicon-home:before {
+  content: "\e007";
+}
+.glyphicon-books2:before {
+  content: "\e00b";
 }
