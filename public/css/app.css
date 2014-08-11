@@ -2064,6 +2064,13 @@ section:after {
   padding: 20px 0 0 35px;
   font-size: 23px;
 }
+.home-footer {
+  background-color: #40557a;
+  color: #283D63;
+  padding: 84px 240px;
+  font-size: 23px;
+  text-shadow: 0px -1px 0px #000000, 0px 1px 0px #6785b9;
+}
 .welcome {
   font-family: 'Source Sans Pro', sans-serif;
   text-transform: uppercase;
