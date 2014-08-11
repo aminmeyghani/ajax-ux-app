@@ -159,12 +159,7 @@ angular.module('MainModule', ['MainApp'])
     $scope.pageSize = 10;
     $scope.noButtonsVisible = 3;
     // book filter
-    $scope.author = {name: ""};
-    // $scope.assetClassMenuFilter = function (x){
-    //   if (x.AssetClass !== undefined && $scope.assetClassMenuSearch.query !== undefined && x.AssetClass.name !== undefined) {
-    //     return (x.AssetClass.name.toLowerCase().contains($scope.assetClassMenuSearch.query.toLowerCase()))
-    //   }
-    // };
+    $scope.author = { name: "" };
     $scope.bookFilter = function (b) {
       return b.author.toLowerCase().indexOf($scope.author.name.toLowerCase()) !== -1;
     };
@@ -251,7 +246,7 @@ angular.module('MainModule', ['MainApp'])
       var windowH = $(window).height();
       var wrapperH = $(element).height();
       if(windowH > wrapperH) {                            
-          $(element).css({'height':($(window).height()-220)+'px'});
+          $(element).css({'height':($(window).height()- attrs.h || 300)+'px'});
       }                                                                               
     },1000);
     $(window).resize(function(){
@@ -261,7 +256,7 @@ angular.module('MainModule', ['MainApp'])
         var newH = wrapperH + differenceH;
         var truecontentH = $(element).find('js-scroll-inner').height();
         if(windowH > truecontentH) {
-            $(element).css('height', (newH - 220)+'px');
+            $(element).css('height', (newH -  attrs.h || 300)+'px');
         }
 
     }) 
