@@ -227,28 +227,27 @@ angular.module('MainModule', ['MainApp'])
 
 // full height
 .directive('fullheight', [ "$window", function($window) {
- return function(scope, element, attrs) {
-  var windowH = $(window).height();
-  var wrapperH = $(element).height();
-  if(windowH > wrapperH) {                            
-    $(element).css({'height':($(window).height())+'px'});
-  }                                                                               
-  $(window).resize(function(){
+   return function(scope, element, attrs) {
     var windowH = $(window).height();
     var wrapperH = $(element).height();
-    var differenceH = windowH - wrapperH;
-    var newH = wrapperH + differenceH;
-    var truecontentH = $('#truecontent').height();
-    if(windowH > truecontentH) {
-      $(element).css('height', (newH)+'px');
-    }
+    if(windowH > wrapperH) {                            
+        $(element).css({'height':($(window).height()-130)+'px'});
+    }                                                                               
+    $(window).resize(function(){
+        var windowH = $(window).height();
+        var wrapperH = $(element).height();
+        var differenceH = windowH - wrapperH;
+        var newH = wrapperH + differenceH;
+        var truecontentH = $(element).find('js-scroll-inner').height();
+        if(windowH > truecontentH) {
+            $(element).css('height', (newH - 130)+'px');
+        }
 
-  });
-
-}
+    }) 
+  }
 }])
 
-// custom scrollbar
+// scrollbar
 .directive('scroller', function() { return function(scope, element, attrs) {
   $(element).perfectScrollbar({wheelSpeed : 20});
 }})

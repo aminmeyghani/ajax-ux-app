@@ -1820,16 +1820,13 @@ a.inverted {
 }
 .mytable td {
   width: 5%;
-  color: #40557a;
-}
-.mytable td:hover {
-  color: red;
+  color: #ffffff;
 }
 .mytable tr {
   border-bottom: 1px solid #49618b;
 }
 .mytable tr:hover {
-  background-color: #000;
+  background-color: #49618b;
 }
 .mytable-droplike {
   float: left;
@@ -1943,6 +1940,12 @@ blockquote[min-height~="68px"] {
 }
 .no-bullets li {
   list-style: none;
+}
+.ps-container .ps-scrollbar-y {
+  background-color: #ffffff;
+}
+.ps-scrollbar-x {
+  display: none;
 }
 body {
   font-family: 'Dosis', sans-serif;

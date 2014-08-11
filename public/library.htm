@@ -10,22 +10,24 @@
     <div class="animate-show-left" ng-show="!!isBooksReady" style="padding:0 12px">
       <div class="row">
         <div class="col-sm-8">
-          <div>
-            <div class="inner scroll-wrap" scroller fullheight  style="height:500px">
-              <table class="mytable">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Author</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="b in books">
-                    <td>{{b.name}}</td>
-                    <td>{{b.author}}</td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="inner">
+            <div class="scroll-wrap" scroller fullheight  style="height:500px">
+              <div class="js-scroll-inner">
+                <table class="mytable">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Author</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="b in books">
+                      <td>{{b.name}}</td>
+                      <td>{{b.author}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

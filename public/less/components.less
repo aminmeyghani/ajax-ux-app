@@ -18,16 +18,12 @@
 	}
   td {
     width: @td-width;
-    color: @color1;
-    &:hover {
-    	color: red;
-    }
+    color: @mywhite;
   }
   tr {
   	border-bottom: 1px solid @color2;
   	&:hover {
-  		background-color: #000;
-
+  		background-color: @color2;
   	}
   }
 }
@@ -179,4 +175,11 @@ blockquote[min-height~="68px"] {
 }
 .no-bullets li {
 	list-style: none;
+}
+// scroller
+.ps-container .ps-scrollbar-y {
+	background-color: @mywhite;
+}
+.ps-scrollbar-x {
+	display: none;
 }
