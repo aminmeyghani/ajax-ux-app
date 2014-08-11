@@ -2816,7 +2816,10 @@ section:after {
   max-height: 18px;
 }
 .top-nav-app {
-  background-color: #4b6083;
+  background-color: #30a9ea;
+  height: 66px;
+  padding: 16px;
+  border-bottom: 3px solid #2793cf;
 }
 .top-nav-app-loggedin {
   background-color: transparent;
@@ -2824,30 +2827,30 @@ section:after {
   padding: 32px 80px;
 }
 .sidebar {
-  background: #4b6083;
+  background: #000;
   border-right: 1px solid #bfcadb;
 }
 .dash-bg {
-  background-color: #9faec8;
+  background-color: #e6eae8;
   color: #ffffff;
 }
 .mytable thead {
-  background-color: #4b6083;
-  color: #e0e5ed;
+  background-color: #000;
+  color: #fff;
 }
 .mytable tr:hover {
-  background-color: #7f93b5;
+  background-color: #000;
   cursor: pointer;
 }
 .mytable tr:hover tr {
   color: red;
 }
 .mytable td {
-  color: #4b6083;
+  color: #000;
 }
 .inner {
-  background: #e0e5ed;
-  color: #4b6083;
+  background: #f9f9f9;
+  color: #000;
   font-family: 'Source Sans Pro', sans-serif;
 }
 .inner h2 {
