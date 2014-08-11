@@ -2052,6 +2052,11 @@ section:after {
 .home-promo {
   margin-top: 173px;
 }
+@media (max-width: 768px) {
+  .home-promo {
+    margin-top: 50px;
+  }
+}
 .home-title {
   text-align: center;
   padding: 60px 0;
@@ -2070,6 +2075,12 @@ section:after {
   padding: 84px 240px;
   font-size: 23px;
   text-shadow: 0px -1px 0px #000000, 0px 1px 0px #6785b9;
+}
+@media (max-width: 768px) {
+  .home-footer {
+    padding: 39px;
+    font-size: 15px;
+  }
 }
 .welcome {
   font-family: 'Source Sans Pro', sans-serif;
@@ -2107,9 +2118,15 @@ section:after {
   padding-top: 50px;
 }
 .top-nav-app {
-  background-color: #40557a;
+  background-color: #2B4269;
+  border-bottom: 1px solid #5D759E;
   height: 60px;
   padding: 12px;
+}
+.top-nav-app-loggedin {
+  background-color: transparent;
+  border: none;
+  padding: 32px 80px;
 }
 .active-nav {
   color: #7e95bc;

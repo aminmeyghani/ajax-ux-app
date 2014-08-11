@@ -1,5 +1,8 @@
 // app page specific
 .home-promo {
+	@media (max-width: @screen-sm) {
+		margin-top: 50px;
+	}
 	margin-top:173px;
 }
 .home-title {
@@ -15,7 +18,10 @@
 	font-size: 23px;
 }
 .home-footer {
-
+@media (max-width: @screen-sm) {
+	padding: 39px;
+	font-size: 15px;
+}
 	background-color: #40557a;
 	color: #283D63;
 	padding: 84px 240px;
@@ -62,9 +68,16 @@
 }
 
 .top-nav-app {
-	background-color: @color1;
+	background-color: #2B4269;
+	border-bottom: 1px solid #5D759E;
 	height: 60px;
 	padding: 12px;
+}
+
+.top-nav-app-loggedin {
+	background-color: transparent;
+	border: none;
+	padding: 32px 80px;
 }
 
 .active-nav {

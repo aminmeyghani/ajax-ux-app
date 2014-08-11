@@ -39,7 +39,6 @@
 
       <body ng-controller="MainCtrl" ng-class="isHome ? '' : 'dash-bg' " class="main" ng-cloak>
         <div id="page-wrapper" ng-class="toggle ? 'active' : ''" style="padding: {{ activePage === '' && !isLoggein ? '0' : ''  }}" ng-cloak ng-controller="LoginCtrl">
-
           <!-- Sidebar -->
           <div id="sidebar-wrapper" ng-show="isLoggedin " style="display: {{ activePage === '' && !isLoggein ? 'none' : ''  }}">
             <ul class="sidebar">
@@ -60,19 +59,10 @@
               </li>
             </ul>
           </div>
-
-          <!-- End Sidebar -->
-
           <div id="content-wrapper">
-
             <div class="page-content" ng-view>
-              
-              <!-- Header Bar -->
-            
-
             </div>
-          </div><!-- End Page Content -->
-        </div><!-- End Content Wrapper -->
-     
+          </div>
+        </div>
     </body>
     </html>
