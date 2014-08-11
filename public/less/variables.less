@@ -1,14 +1,36 @@
+// border-radius reseet
+@border-radius-base:				    0;/* was 4px;*/
+@border-radius-large:						0;/* was 6px */
+@border-radius-small:						0;/* was 3px */
 // grid
 @grid-gutter-width:           7px; 
 // color schemes.
-@seed: #49618b;
-@color1 : darken(@seed, 5%);
-@color2 : @seed;
-@color3 : lighten(@seed, 20%);
+@seed: #182D50;
+@seed2: #4B6083;
+
+@color2-1 :   @seed2; 							 // #4B6083
+@color2-2 :   lighten(@seed2, 10%);  // #657A9D
+@color2-2 :   lighten(@seed2, 20%);  // #7E93B6
+@color2-3 :   lighten(@seed2, 30%);  // #98ADD0
+@color2-4 :   lighten(@seed2, 40%);  // ##B1C6E9
+@color2-5 :   lighten(@seed2, 50%);  // #CADFFF
+//-------
+@color2-6 :   darken(@seed2, 10%);  // #32476A
+@color2-7 :   darken(@seed2, 20%);  // #182D50
+@color2-8 :   darken(@seed2, 30%);  // #001437
+@color2-9 :   darken(@seed2, 40%);  // #00001D
+@color2-10 :  darken(@seed2, 50%);  // #000004
+
+
+@color1: @seed2;
+@color2 : @color2-2;
+@color3: @color2-4;
 @mywhite  : #fff;
 @myblack  : #000;
 
 @light-gray1: #e5e6e7;
+
+@brand-primary: @seed2;
 
 // fonts sizes
 @fs-1: 11px;
@@ -23,4 +45,3 @@
 
 // animation
 @animation-duration : 200ms;
-

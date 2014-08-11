@@ -11,6 +11,21 @@
       <div class="row">
         <div class="col-sm-8">
           <div class="inner inner-with-scroll box-shadow-e6">
+            <div style="padding-right:9px">
+              <h2>New Books !</h2>
+              <input type="text" ng-model="author.name" placeholder="Book author ..." class="form-control">
+              <pagination
+                total-items="books.length"
+                ng-model="currentPage"
+                items-per-page="pageSize"
+                max-size="noButtonsVisible"
+                class="pagination-sm"
+                ng-change="myPage.pageChanged()"
+                previous-text="&lt;"
+                next-text="&gt;"
+                boundary-links="true">
+              </pagination>
+            </div>
             <div class="scroll-wrap" scroller fullheight  style="height:500px">
               <div class="js-scroll-inner">
                 <table class="mytable">
@@ -21,7 +36,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="b in books">
+                    <tr class="animate-repeat" ng-repeat="b in (filteredBppls = (books | filter:bookFilter)) | paginate:currentPage:pageSize">
                       <td>{{b.name}}</td>
                       <td>{{b.author}}</td>
                     </tr>

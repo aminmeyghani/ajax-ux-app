@@ -92,15 +92,19 @@ angular.module('MainModule', ['MainApp'])
 }])
 // Higher level controller for the dashboard.
 .controller("LibraryCtrl", [ "$rootScope","$scope", "$http", "$q", "Facebook", "Auth", "$timeout", function ($rootScope, $scope, $http, $q, Facebook, Auth, $timeout) {
+
   // getting the books
   $scope.isBooksReady = false;
+  // ajax call to get the books from MYSQL through express REST API
   $q.all([$http({method: "GET",url: "/books"})
   ]).then(function(response) {$scope.books = response[0].data; $timeout(function () {$scope.isBooksReady = true},500)});
     
   // get list of my facebook friends.
   Auth.runQuery("/me", function(d){ $scope.me = d});
+
   // get list of friends.
   Auth.runQuery("/me/friends", function(d){ $scope.myFriends = d.data});
+
   // get friends books.
   var rawFriendsData = [];
   Auth.runQuery("/me/friends", function(friends){ 
@@ -148,6 +152,21 @@ angular.module('MainModule', ['MainApp'])
     $scope.askForLikes = function () {
       FB.login(function(response) {
       }, {scope: 'email,user_likes,user_friends'});
+    };
+
+    // book table pagination
+    $scope.currentPage = 1;
+    $scope.pageSize = 10;
+    $scope.noButtonsVisible = 3;
+    // book filter
+    $scope.author = {name: ""};
+    // $scope.assetClassMenuFilter = function (x){
+    //   if (x.AssetClass !== undefined && $scope.assetClassMenuSearch.query !== undefined && x.AssetClass.name !== undefined) {
+    //     return (x.AssetClass.name.toLowerCase().contains($scope.assetClassMenuSearch.query.toLowerCase()))
+    //   }
+    // };
+    $scope.bookFilter = function (b) {
+      return b.author.toLowerCase().indexOf($scope.author.name.toLowerCase()) !== -1;
     };
   
  }])
@@ -226,13 +245,15 @@ angular.module('MainModule', ['MainApp'])
 }})
 
 // full height
-.directive('fullheight', [ "$window", function($window) {
+.directive('fullheight', [ "$timeout", function($timeout) {
    return function(scope, element, attrs) {
-    var windowH = $(window).height();
-    var wrapperH = $(element).height();
-    if(windowH > wrapperH) {                            
-        $(element).css({'height':($(window).height()-130)+'px'});
-    }                                                                               
+    $timeout(function() {
+      var windowH = $(window).height();
+      var wrapperH = $(element).height();
+      if(windowH > wrapperH) {                            
+          $(element).css({'height':($(window).height()-220)+'px'});
+      }                                                                               
+    },1000);
     $(window).resize(function(){
         var windowH = $(window).height();
         var wrapperH = $(element).height();
@@ -240,7 +261,7 @@ angular.module('MainModule', ['MainApp'])
         var newH = wrapperH + differenceH;
         var truecontentH = $(element).find('js-scroll-inner').height();
         if(windowH > truecontentH) {
-            $(element).css('height', (newH - 130)+'px');
+            $(element).css('height', (newH - 220)+'px');
         }
 
     }) 
@@ -251,3 +272,15 @@ angular.module('MainModule', ['MainApp'])
 .directive('scroller', function() { return function(scope, element, attrs) {
   $(element).perfectScrollbar({wheelSpeed : 20});
 }})
+
+// filters
+// ------------
+.filter('paginate', function() {
+  return function(d, start, pageSize, skipFilter) {
+    if (!d || skipFilter) return d;
+    start = +start;
+    start--;
+    pageSize = +pageSize;
+    return  d.slice(start*pageSize, (start*pageSize)+pageSize);
+  };
+})
