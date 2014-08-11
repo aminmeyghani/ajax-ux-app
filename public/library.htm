@@ -46,142 +46,63 @@
               <i class="pull-right primary" icon="like-left"></i>
               <li class="widget-tab">
                 <a href class="widget-tab-link">Your Friend's Favorites</a>
-                <!-- Omitting the end tag is valid HTML and removes the space in-between inline blocks. -->
+              </li>
             </ul>
           </div>
         </div>
-        <div class="col-sm-7">
-          <div class="widget">
-            <ol class="widget-list no-bullets" id="developers">
-              <li ng-hide="rawFriendsData.length">
+        <!-- <div class="col-sm-7 scroll-wrap" scroller fullheight h="200"  style="height:300px"> -->
+        <div class="col-sm-7 scroll-wrap">
+          <div class="widget js-scroll-inner">
+            <ol class="widget-list no-bullets">
+              <li ng-hide="books.length">
                 <a href class="widget-list-link">
-                  
                   <p class="text-center">loading ...</p>
                 </a>
               </li>
-              <li ng-repeat="d in rawFriendsData">
-                <a href="{{d.book.bookPage.link}}" target="_blank" class="widget-list-link">
-                  <img ng-src="{{d.book.bookPage.cover.source}}" class="circle">
-                  {{d.book.data.name}} <span>Favorited by: {{d.friend.data.name}}</span>
+              <li class="row">
+                <div style="padding: 18px 5px 0px 5px" ng-show="books.length">
+                  <div for="authorname" class="blk col-sm-2 text-left" style="padding-top:5px">Search</div>
+                  <div class="col-sm-9">
+                    <input ng-model="author.name" type="text" class="form-control"  placeholder="e.g. Stephen">
+                  </div>
+                  
+                </div>
+              </li>
+
+              
+
+              <li ng-repeat="b in (filteredBppls = (books | filter:bookFilter)) | paginate:currentPage:pageSize">
+                <a href target="_blank" class="widget-list-link">
+                  <img src="" class="circle">
+                  {{b.name}} <span>By: {{b.author}}</span>
                 </a>
+              </li>
+              <li>
+                <pagination
+                  total-items="books.length"
+                  ng-model="currentPage"
+                  items-per-page="pageSize"
+                  max-size="noButtonsVisible"
+                  class="pagination-sm"
+                  ng-change="myPage.pageChanged()"
+                  previous-text="&lt;"
+                  next-text="&gt;"
+                  boundary-links="true">
+                </pagination>
               </li>
             </ol>
             <ul class="widget-tabs">
               <i class="pull-right primary" icon="books"></i>
               <li class="widget-tab">
                 <a href class="widget-tab-link">New Books</a>
+              </li>
+              
                 <!-- Omitting the end tag is valid HTML and removes the space in-between inline blocks. -->
             </ul>
           </div>
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="col-sm-5">
-          <div class="inner inner-with-scroll box-shadow-e6">
-            <div style="padding-right:9px">
-              <h2>New Books !</h2>
-              <input type="text" ng-model="author.name" placeholder="Book author ..." class="form-control">
-              <pagination
-                total-items="books.length"
-                ng-model="currentPage"
-                items-per-page="pageSize"
-                max-size="noButtonsVisible"
-                class="pagination-sm"
-                ng-change="myPage.pageChanged()"
-                previous-text="&lt;"
-                next-text="&gt;"
-                boundary-links="true">
-              </pagination>
-            </div>
-            <div class="scroll-wrap" scroller fullheight h="280"  style="height:250px">
-              <div class="js-scroll-inner">
-                <table class="mytable">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Author</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="animate-repeat" ng-repeat="b in (filteredBppls = (books | filter:bookFilter)) | paginate:currentPage:pageSize">
-                      <td>{{b.name}}</td>
-                      <td>{{b.author}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-7">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="inner box-shadow-e6">
-                <h2>Friend Book</h2>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="inner box-shadow-e6">
-                <h2>Friend Book</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-<!--       <div class="row">
-        <div ng-show="mainData.length" class="animate-show-left">
-          <ul class="no-bullets light-list">
-            <li ng-repeat="d in mainData">
-              <ul style="padding-left:20px;">
-                <li ng-repeat="b in d.books">
-                  <style>
-                  
-                    .my-col {
-                      float:left;
-                      width:321;
-                    }
-                    .inner-book {
-                      border: 1px solid #e5e6e7;
-                      height: 256px;
-                      padding: 5px;
-                      margin: 4px;
-                    }
-                    .book-title {
-                      background-color: #000;
-                      padding: 8px;
-                      height: 37px;
-                      font-weight: 500;
-                    }
-                    .book-friend {
-                      padding: 2px;
-                      background: #000;
-                    }
-                  </style>
-                    <div class="my-col">
-                      <div class="inner-book">
-                        <div class="book-title">
-                          <div>
-                            <a href="{{b.bookPage.link}}">{{b.data.name}}</a>
-                          </div>
-                        </div>
-                        <div>
-                          <div>
-                            <img  src="{{b.bookPage.cover.source}}" resize w="300" h="170" alt="">
-                          </div>
-                        </div>
-                        <div class="fix-float book-friend">
-                          <div class="pull-left"><img style="width:35px" src="{{d.friend.picURL}}" alt=""> </div><div style="padding: 5px 0 0 5px" class="pull-left">{{d.friend.data.name}} </div> 
-                        </div>
-                      </div>
-                    </div>
-                    <div ng-if="$index === 1" class="clearfix"></div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div> -->
+      
     </div>
   </div>
 </div>
