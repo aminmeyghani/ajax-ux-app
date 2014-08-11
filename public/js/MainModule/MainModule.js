@@ -224,3 +224,4 @@ angular.module('MainModule', ['MainApp'])
     vertical:attrs.vertical || "vertical"
   });  
 }})
+

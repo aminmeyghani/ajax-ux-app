@@ -1,9 +1,12 @@
 <div ng-controller="BooksCtrl">
 	<div ng-include="'topnav.htm'"></div>
-	<div class="text-center" ng-show="!isBooksReady">
-		<p class="loader loader-small" style="margin:20% auto 0 auto;width:20px" ></p>
-		loading ...
+	<div ng-show="!isBooksReady">
+		<div class="loader-small-wrapper">
+			<p class="loader loader-small" ></p>
+		</div>
+		<p class="loader-small-text">loading</p>	
 	</div>
+	
 	<div ng-show="isBooksReady" class="animate-show-left" style="padding: 0 12px">
 		<div class="cxontainer">
 			<div class="row">

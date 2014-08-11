@@ -1,19 +1,11 @@
-<style>
-.inner {
-  margin-top: 15px;
-  padding: 15px;
-  background: #2E4E6F;
-  border-radius: 4px;
-  border: 1px solid #0F425F;
-}
-</style>
+
 <div ng-controller="LibraryCtrl">
   <div ng-include="'topnav.htm'"></div>
   <div ng-show="!!!isBooksReady">
-    <div style="width: 10px;margin: 0 auto;margin-top: 20%;">
+    <div class="loader-small-wrapper">
       <p class="loader loader-small" ></p>
     </div>
-    <p style="margin: 0 auto;width: 31px;margin-top: 10px;">loading</p>
+    <p class="loader-small-text">loading</p>
   </div>
   <div class="xcontainerx">
     <div class="animate-show-left" ng-show="!!isBooksReady" style="padding:0 12px">
