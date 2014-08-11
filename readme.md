@@ -34,3 +34,7 @@ This is the protocol of the `db.js` file:
 
 
 server will be running at port 8909: `http://localhost:8909`
+
+## facebok test user ##
+	email: linda_nyjsahh_tinux@tfbnw.net
+	pass : linda20
