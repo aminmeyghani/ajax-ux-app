@@ -253,15 +253,6 @@ angular.module('MainModule', ['MainApp'])
   $(element).tooltip({placement: attrs.placement,title:function(){return $(element).attr('tip')}});
 }})
 
-// resize and corp image.
-.directive('resize', function() { return function(scope, element, attrs) {
-  $(element).resizecrop({
-    width:attrs.w,
-    height:attrs.h,
-    vertical:attrs.vertical || "vertical"
-  });  
-}})
-
 // full height
 .directive('fullheight', [ "$timeout", function($timeout) {
    return function(scope, element, attrs) {
