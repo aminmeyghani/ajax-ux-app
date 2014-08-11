@@ -10,6 +10,28 @@
     <div class="animate-show-left" ng-show="!!isBooksReady" style="padding:0 12px">
       <div class="row">
         <div class="col-sm-5">
+          <div class="widget">
+
+            <ol class="widget-list no-bullets" id="developers">
+              <li ng-repeat="d in rawFriendsData">
+                <a class="widget-list-link">
+                  <img src="{{d.friend.picURL}}" class="circle">
+                  {{d.book.data.name}} <span>481 followers</span>
+                </a>
+              </li>
+            </ol>
+
+            <ul class="widget-tabs">
+              <li class="widget-tab">
+                <a href class="widget-tab-link">Your Friend's Favorites</a>
+                <!-- Omitting the end tag is valid HTML and removes the space in-between inline blocks. -->
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-sm-5">
           <div class="inner inner-with-scroll box-shadow-e6">
             <div style="padding-right:9px">
               <h2>New Books !</h2>
@@ -60,7 +82,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 <!--       <div class="row">
         <div ng-show="mainData.length" class="animate-show-left">

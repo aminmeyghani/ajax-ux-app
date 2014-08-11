@@ -106,18 +106,18 @@ angular.module('MainModule', ['MainApp'])
   Auth.runQuery("/me/friends", function(d){ $scope.myFriends = d.data});
 
   // get friends books.
-  var rawFriendsData = [];
+  $scope.rawFriendsData = [];
   Auth.runQuery("/me/friends", function(friends){ 
     friends.data.forEach(function (f) {
       Auth.runQuery("/"+f.id+"/books", function(books){ 
         books.data.forEach(function (b) {
           Auth.runQuery("/"+b.id, function(page){ 
             Auth.runQuery("/"+f.id+"/picture", function (friendPicture) {
-              rawFriendsData.push({
+              $scope.rawFriendsData.push({
                 book: {data: b, bookPage: page},
                 friend: {data:f, picURL: friendPicture.data.url},
               });
-              var mydata = _.groupBy(rawFriendsData, function (x) {return x.friend.data.id} );
+              var mydata = _.groupBy($scope.rawFriendsData, function (x) {return x.friend.data.id} );
               $scope.mainData = [];
               // organize data for display. returns -> 
               /*
